@@ -1,0 +1,117 @@
+// portfolio.ts
+import { Category, Project, Testimonial } from "@/types/types";
+
+export const categories: Category[] = [
+  "All",
+  "Web Development",
+  "UI/UX Design",
+  "Digital Marketing",
+  "Content Strategy",
+];
+
+export const projects: Project[] = [
+  {
+    title: "E-Commerce Platform Redesign",
+    category: "Web Development",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+    desc: "Complete platform overhaul resulting in 40% increase in conversions and enhanced user experience.",
+    client: "RetailCo Global",
+    duration: "3 months",
+    technologies: ["React", "Node.js", "PostgreSQL"],
+    results: "+40% conversions, +25% user engagement",
+  },
+  {
+    title: "Fintech Brand Identity",
+    category: "UI/UX Design",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    desc: "Modern brand identity and digital presence for emerging fintech startup.",
+    client: "FinStart Solutions",
+    duration: "2 months",
+    technologies: ["Figma", "Adobe Creative Suite"],
+    results: "200% increase in brand recognition",
+  },
+  {
+    title: "Enterprise SEO Campaign",
+    category: "Digital Marketing",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    desc: "Comprehensive SEO strategy driving organic growth for SaaS platform.",
+    client: "SaaSify Enterprise",
+    duration: "6 months",
+    technologies: ["SEMrush", "Google Analytics", "Content Strategy"],
+    results: "+150% organic traffic, #1 rankings for 15 keywords",
+  },
+  {
+    title: "Content Strategy & Blog",
+    category: "Content Strategy",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+    desc: "Strategic content development and thought leadership positioning.",
+    client: "BizCorp Industries",
+    duration: "4 months",
+    technologies: ["WordPress", "Content Management"],
+    results: "+300% blog engagement, 50+ published articles",
+  },
+  {
+    title: "Mobile Banking App UI",
+    category: "UI/UX Design",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+    desc: "Intuitive mobile interface design focused on security and usability.",
+    client: "Bankly Financial",
+    duration: "4 months",
+    technologies: ["React Native", "Figma", "Prototyping"],
+    results: "4.8/5 app store rating, 60% faster transactions",
+  },
+  {
+    title: "Product Launch Campaign",
+    category: "Digital Marketing",
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+    desc: "Multi-channel marketing campaign for innovative product launch.",
+    client: "LaunchPro Tech",
+    duration: "2 months",
+    technologies: ["Google Ads", "Facebook Ads", "Analytics"],
+    results: "500K+ reach, 15% conversion rate",
+  },
+  {
+    title: "Custom CMS Development",
+    category: "Web Development",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
+    desc: "Headless content management system for media publishing workflow.",
+    client: "MediaX Publishing",
+    duration: "5 months",
+    technologies: ["Next.js", "Strapi", "GraphQL"],
+    results: "50% faster content publishing, improved workflow",
+  },
+  {
+    title: "Corporate Identity Design",
+    category: "UI/UX Design",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop",
+    desc: "Complete visual identity system for technology consulting firm.",
+    client: "TechNest Consulting",
+    duration: "3 months",
+    technologies: ["Brand Strategy", "Logo Design", "Guidelines"],
+    results: "Unified brand presence across 12 touchpoints",
+  },
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Emily Rodriguez",
+    company: "RetailCo Global",
+    position: "VP of Digital",
+    text: "The team transformed our entire digital presence. The results speak for themselves - 40% increase in sales and countless positive customer feedback.",
+    rating: 5,
+  },
+  {
+    name: "James Liu",
+    company: "FinStart Solutions",
+    position: "CEO & Founder",
+    text: "Professional, creative, and strategic. They understood our vision and delivered beyond expectations. Our brand now truly stands out.",
+    rating: 5,
+  },
+  {
+    name: "Sarah Mitchell",
+    company: "SaaSify Enterprise",
+    position: "Head of Marketing",
+    text: "Incredible SEO results and a team that actually understands B2B marketing. Our organic growth has been phenomenal.",
+    rating: 5,
+  },
+];
