@@ -84,7 +84,7 @@ export const testimonials: Testimonial[] = [
     name: "Sarah Johnson",
     position: "Marketing Director",
     company: "TechStart Inc.",
-    text: "Divinity Tech transformed our online presence completely. Our website traffic increased by 300% and conversions doubled within the first quarter.",
+    text: "Devnity Tech transformed our online presence completely. Our website traffic increased by 300% and conversions doubled within the first quarter.",
     rating: 5,
     avatar: "/professional-woman-diverse.png",
     service: "Web Development"

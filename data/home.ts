@@ -110,7 +110,7 @@ export const testimonials: Testimonial[] = [
     name: "Emily Rodriguez",
     company: "RetailCo",
     position: "Marketing Director",
-    text: "Divinity Tech delivered a stunning e-commerce site that boosted our sales by 40%. Their attention to detail and professional approach exceeded our expectations.",
+    text: "Devnity Tech delivered a stunning e-commerce site that boosted our sales by 40%. Their attention to detail and professional approach exceeded our expectations.",
     rating: 5,
     avatar: "/testimonial1.png"
   },

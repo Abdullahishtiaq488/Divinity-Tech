@@ -4,7 +4,7 @@ export const companyInfo: CompanyInfo = {
   founded: "2017",
   mission: "To empower businesses with innovative digital solutions that drive growth, enhance user experiences, and create lasting impact in the digital landscape.",
   vision: "To be the leading digital transformation partner, recognized for our creativity, technical excellence, and commitment to client success.",
-  story: "Founded in 2017, Divinity Tech began as a small creative studio with a big vision. What started as a passion project between friends has evolved into a full-service digital agency trusted by clients worldwide. Our journey has been marked by continuous learning, adaptation, and an unwavering commitment to excellence. Today, we're proud to be at the forefront of digital innovation, helping businesses navigate the ever-changing digital landscape with confidence and success.",
+  story: "Founded in 2017, Devnity Tech began as a small creative studio with a big vision. What started as a passion project between friends has evolved into a full-service digital agency trusted by clients worldwide. Our journey has been marked by continuous learning, adaptation, and an unwavering commitment to excellence. Today, we're proud to be at the forefront of digital innovation, helping businesses navigate the ever-changing digital landscape with confidence and success.",
   values: [
     "Innovation & Creativity",
     "Client-Centric Approach", 

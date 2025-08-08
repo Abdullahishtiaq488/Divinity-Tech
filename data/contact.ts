@@ -4,8 +4,8 @@ export const contactMethods: ContactMethod[] = [
   {
     icon: "Mail",
     label: "Email Us",
-    value: "hello@divinitytech.com",
-    href: "mailto:hello@divinitytech.com"
+    value: "hello@devnitytech.com",
+    href: "mailto:hello@devnitytech.com"
   },
   {
     icon: "Phone",
@@ -16,7 +16,7 @@ export const contactMethods: ContactMethod[] = [
   {
     icon: "MapPin",
     label: "Visit Us",
-    value: "123 Innovation Ave, Suite 400, New York, NY 10001",
+    value: "124 Emma Circle Harrisburg, PA 17112",
     href: "https://maps.google.com"
   },
   {

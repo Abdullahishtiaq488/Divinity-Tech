@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Star, ExternalLink, Calendar, Users, Award, TrendingUp, Shield, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
@@ -29,10 +28,10 @@ export default function PortfolioPage() {
         <div className="max-w-6xl mx-auto text-center relative">
           <div 
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-            style={{ 
-              backgroundColor: '#f3e8ff', 
-              color: '#9333ea', 
-              borderColor: '#c084fc' 
+            style={{
+              backgroundColor: '#f3e8ff',
+              color: '#9333ea',
+              borderColor: '#c084fc'
             }}
           >
             <Award size={16} />
@@ -74,7 +73,7 @@ export default function PortfolioPage() {
                 { bg: '#fed7aa', text: '#ea580c', border: '#fdba74' }
               ];
               const color = colors[index % colors.length];
-              
+            
               return (
                 <button
                   key={cat}
@@ -110,7 +109,7 @@ export default function PortfolioPage() {
                 { bg: '#fed7aa', text: '#ea580c', border: '#fdba74' }
               ];
               const color = colors[index % colors.length];
-              
+            
               return (
                 <motion.div
                   key={project.title}
@@ -119,9 +118,9 @@ export default function PortfolioPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer border-2 hover:scale-105"
-                  style={{ 
-                    backgroundColor: 'var(--color-surface)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-surface)',
+                    borderColor: 'var(--color-border)'
                   }}
                   onClick={() => setSelected(project)}
                 >
@@ -140,10 +139,10 @@ export default function PortfolioPage() {
                     <div className="absolute top-4 left-4">
                       <span 
                         className="px-3 py-1 rounded-full text-xs font-semibold border-2"
-                        style={{ 
-                          backgroundColor: color.bg, 
-                          color: color.text, 
-                          borderColor: color.border 
+                        style={{
+                          backgroundColor: color.bg,
+                          color: color.text,
+                          borderColor: color.border
                         }}
                       >
                         {project.category}
@@ -153,9 +152,9 @@ export default function PortfolioPage() {
                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div 
                         className="backdrop-blur-sm rounded-full p-2 border-2"
-                        style={{ 
-                          backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-                          borderColor: color.text 
+                        style={{
+                          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                          borderColor: color.text
                         }}
                       >
                         <ExternalLink size={16} style={{ color: color.text }} />
@@ -194,9 +193,9 @@ export default function PortfolioPage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               className="rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border-2"
-              style={{ 
-                backgroundColor: 'var(--color-surface)', 
-                borderColor: 'var(--color-border)' 
+              style={{
+                backgroundColor: 'var(--color-surface)',
+                borderColor: 'var(--color-border)'
               }}
             >
               <div className="relative">
@@ -213,9 +212,9 @@ export default function PortfolioPage() {
                 <button
                   onClick={() => setSelected(null)}
                   className="absolute top-4 right-4 rounded-full p-2 transition-colors border-2"
-                  style={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
                   <X size={20} style={{ color: 'var(--color-text)' }} />
@@ -224,9 +223,9 @@ export default function PortfolioPage() {
                 <div className="absolute bottom-4 left-6">
                   <span 
                     className="text-white px-4 py-2 rounded-full text-sm font-semibold border-2"
-                    style={{ 
-                      backgroundColor: '#3b82f6', 
-                      borderColor: '#93c5fd' 
+                    style={{
+                      backgroundColor: '#3b82f6',
+                      borderColor: '#93c5fd'
                     }}
                   >
                     {selected.category}
@@ -242,9 +241,9 @@ export default function PortfolioPage() {
 
                     <div 
                       className="rounded-xl p-4 mb-6 border-2"
-                      style={{ 
-                        backgroundColor: '#dcfce7', 
-                        borderColor: '#bbf7d0' 
+                      style={{
+                        backgroundColor: '#dcfce7',
+                        borderColor: '#bbf7d0'
                       }}
                     >
                       <h4 className="font-semibold mb-2 flex items-center gap-2" style={{ color: '#16a34a' }}>
@@ -268,12 +267,12 @@ export default function PortfolioPage() {
                           
                           return (
                             <span 
-                              key={tech} 
+                              key={tech}
                               className="px-3 py-1 rounded-full text-sm font-medium border"
-                              style={{ 
-                                backgroundColor: color.bg, 
-                                color: color.text, 
-                                borderColor: color.text 
+                              style={{
+                                backgroundColor: color.bg,
+                                color: color.text,
+                                borderColor: color.text
                               }}
                             >
                               {tech}
@@ -287,9 +286,9 @@ export default function PortfolioPage() {
                   <div className="space-y-6">
                     <div 
                       className="rounded-xl p-4 border-2"
-                      style={{ 
-                        backgroundColor: 'var(--color-muted)', 
-                        borderColor: 'var(--color-border)' 
+                      style={{
+                        backgroundColor: 'var(--color-muted)',
+                        borderColor: 'var(--color-border)'
                       }}
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -301,9 +300,9 @@ export default function PortfolioPage() {
 
                     <div 
                       className="rounded-xl p-4 border-2"
-                      style={{ 
-                        backgroundColor: 'var(--color-muted)', 
-                        borderColor: 'var(--color-border)' 
+                      style={{
+                        backgroundColor: 'var(--color-muted)',
+                        borderColor: 'var(--color-border)'
                       }}
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -313,15 +312,14 @@ export default function PortfolioPage() {
                       <p style={{ color: 'var(--color-text-secondary)' }}>{selected.duration}</p>
                     </div>
 
-                    <button 
-                      className="w-full text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-                      style={{ backgroundColor: '#3b82f6' }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
                       <ExternalLink size={18} />
                       View Live Project
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               </div>
@@ -342,10 +340,10 @@ export default function PortfolioPage() {
           <div className="text-center mb-16">
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-              style={{ 
-                backgroundColor: '#dcfce7', 
-                color: '#16a34a', 
-                borderColor: '#bbf7d0' 
+              style={{
+                backgroundColor: '#dcfce7',
+                color: '#16a34a',
+                borderColor: '#bbf7d0'
               }}
             >
               <Star size={16} />
@@ -395,10 +393,10 @@ export default function PortfolioPage() {
           >
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-              style={{ 
-                backgroundColor: '#dbeafe', 
-                color: '#2563eb', 
-                borderColor: '#93c5fd' 
+              style={{
+                backgroundColor: '#dbeafe',
+                color: '#2563eb',
+                borderColor: '#93c5fd'
               }}
             >
               <Sparkles size={16} />
@@ -413,32 +411,21 @@ export default function PortfolioPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button 
-                className="text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                style={{ backgroundColor: '#3b82f6' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 Start Your Project
                 <ArrowRight size={18} />
-              </button>
-              <button 
-                className="border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-                style={{ 
-                  borderColor: 'var(--color-border)', 
-                  color: 'var(--color-text)' 
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#3b82f6';
-                  e.currentTarget.style.color = '#3b82f6';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--color-border)';
-                  e.currentTarget.style.color = 'var(--color-text)';
-                }}
+              </motion.button>
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-blue-200 hover:border-blue-400 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 View Our Process
-              </button>
+              </motion.button>
             </div>
 
             {/* Trust Indicators */}
@@ -455,9 +442,9 @@ export default function PortfolioPage() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                   className="flex items-center justify-center gap-3 rounded-xl p-4 border-2"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
                   <div style={{ color: item.color }}>{item.icon}</div>

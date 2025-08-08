@@ -510,7 +510,7 @@ export default function ServicesPage() {
             viewport={{ once: true }}
           >
             <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium mb-6 border-2"
               style={{ 
                 backgroundColor: '#f3e8ff', 
                 color: '#9333ea', 

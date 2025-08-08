@@ -95,7 +95,7 @@ export default function Header() {
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text'
                         }} className="leading-tight font-extrabold">
-                            Divinity Tech
+                            Devnity Tech
                         </span>
                         <span className="text-xs font-normal opacity-60" style={{ color: 'var(--color-text-secondary)' }}>
                             Digital Solutions

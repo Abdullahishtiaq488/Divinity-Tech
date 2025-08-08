@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { Users, Award, Briefcase, TrendingUp, Search, Palette, Code, Rocket, Calendar, Star, ArrowRight, Linkedin, Twitter, CheckCircle } from 'lucide-react';
 import Image from "next/image";
@@ -44,51 +43,40 @@ export default function AboutPage() {
             >
               <div 
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-                style={{ 
-                  backgroundColor: '#fef3c7', 
-                  color: '#d97706', 
-                  borderColor: '#fbbf24' 
+                style={{
+                  backgroundColor: '#fef3c7',
+                  color: '#d97706',
+                  borderColor: '#fbbf24'
                 }}
               >
                 <Star size={16} />
                 <span>Founded in {companyInfo.founded}</span>
               </div>
-              
+            
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" style={{ color: 'var(--color-text)' }}>
-                Meet <span style={{ color: '#3b82f6' }}>Divinity Tech</span>
+                Meet <span style={{ color: '#3b82f6' }}>Devnity Tech</span>
               </h1>
-              
+            
               <p className="text-xl mb-8 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {companyInfo.mission}
               </p>
-              
+            
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  className="text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                  style={{ backgroundColor: '#3b82f6' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                 >
                   Get to Know Us
                   <ArrowRight size={18} />
-                </button>
-                <button 
-                  className="border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-                  style={{ 
-                    borderColor: 'var(--color-border)', 
-                    color: 'var(--color-text)' 
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#3b82f6';
-                    e.currentTarget.style.color = '#3b82f6';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--color-border)';
-                    e.currentTarget.style.color = 'var(--color-text)';
-                  }}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border-2 border-blue-200 hover:border-blue-400 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   Our Work
-                </button>
+                </motion.button>
               </div>
             </motion.div>
             
@@ -114,13 +102,13 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
               </div>
-              
+            
               {/* Floating elements */}
               <div 
                 className="absolute -top-6 -right-6 rounded-2xl p-4 shadow-xl border-2"
-                style={{ 
-                  backgroundColor: 'var(--color-surface)', 
-                  borderColor: 'var(--color-border)' 
+                style={{
+                  backgroundColor: 'var(--color-surface)',
+                  borderColor: 'var(--color-border)'
                 }}
               >
                 <div className="flex items-center gap-2">
@@ -148,12 +136,12 @@ export default function AboutPage() {
               <p className="text-lg mb-8 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {companyInfo.story}
               </p>
-              
+            
               <div 
                 className="rounded-2xl p-6 border-2"
-                style={{ 
-                  backgroundColor: 'var(--color-muted)', 
-                  borderColor: 'var(--color-border)' 
+                style={{
+                  backgroundColor: 'var(--color-muted)',
+                  borderColor: 'var(--color-border)'
                 }}
               >
                 <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--color-text)' }}>Our Vision</h3>
@@ -177,9 +165,9 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="flex items-center gap-3 rounded-xl p-4 shadow-sm border-2 hover:shadow-md transition-shadow"
-                    style={{ 
-                      backgroundColor: 'var(--color-surface)', 
-                      borderColor: 'var(--color-border)' 
+                    style={{
+                      backgroundColor: 'var(--color-surface)',
+                      borderColor: 'var(--color-border)'
                     }}
                   >
                     <CheckCircle size={20} className="flex-shrink-0" style={{ color: '#16a34a' }} />
@@ -203,10 +191,10 @@ export default function AboutPage() {
           >
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-              style={{ 
-                backgroundColor: '#f3e8ff', 
-                color: '#9333ea', 
-                borderColor: '#c084fc' 
+              style={{
+                backgroundColor: '#f3e8ff',
+                color: '#9333ea',
+                borderColor: '#c084fc'
               }}
             >
               <Award size={16} />
@@ -228,7 +216,7 @@ export default function AboutPage() {
                 { bg: '#fed7aa', text: '#ea580c', border: '#fdba74' }
               ];
               const color = colors[index % colors.length];
-              
+            
               return (
                 <motion.div
                   key={stat.id}
@@ -237,17 +225,17 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 border-2 group"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
                   <div 
                     className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300 border-2"
-                    style={{ 
-                      backgroundColor: color.bg, 
-                      color: color.text, 
-                      borderColor: color.border 
+                    style={{
+                      backgroundColor: color.bg,
+                      color: color.text,
+                      borderColor: color.border
                     }}
                   >
                     <IconComponent size={32} />
@@ -286,9 +274,9 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border-2"
-                style={{ 
-                  backgroundColor: 'var(--color-surface)', 
-                  borderColor: 'var(--color-border)' 
+                style={{
+                  backgroundColor: 'var(--color-surface)',
+                  borderColor: 'var(--color-border)'
                 }}
               >
                 <div className="relative overflow-hidden">
@@ -344,7 +332,7 @@ export default function AboutPage() {
             {processSteps.map((step, index) => {
               const IconComponent = iconMap[step.icon as keyof typeof iconMap];
               const color = colorMap[step.color as keyof typeof colorMap];
-              
+            
               return (
                 <motion.div
                   key={step.id}
@@ -353,9 +341,9 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border-2 group"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
                   {/* Step Number */}
@@ -368,10 +356,10 @@ export default function AboutPage() {
                   
                   <div 
                     className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300 border-2"
-                    style={{ 
-                      backgroundColor: color.bg, 
-                      color: color.text, 
-                      borderColor: color.border 
+                    style={{
+                      backgroundColor: color.bg,
+                      color: color.text,
+                      borderColor: color.border
                     }}
                   >
                     <IconComponent size={24} />
@@ -386,45 +374,98 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA Section - Enhanced */}
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* CTA Section - Enhanced with Background Image */}
+      <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/modern-office-collaboration.png"
+            alt="Team collaboration"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+        </div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative max-w-4xl mx-auto text-center z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold mb-6" style={{ color: 'var(--color-text)' }}>Ready to Work Together?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
-              Let's discuss how our team can help transform your business with innovative digital solutions.
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium mb-8 border-2 border-white/20 bg-white/10 backdrop-blur-sm">
+              <Star size={16} className="text-yellow-400" />
+              <span className="text-white">Let's Build Something Amazing</span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+              Ready to Work{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Together?
+              </span>
+            </h2>
+            
+            <p className="text-xl md:text-xl mb-12 max-w-3xl mx-auto text-gray-200 leading-relaxed">
+              Let's discuss how our team can help transform your business with innovative digital solutions that drive real results.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                style={{ backgroundColor: '#3b82f6' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+            
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">150+</div>
+                <div className="text-sm text-gray-300">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">4+</div>
+                <div className="text-sm text-gray-300">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
+                <div className="text-sm text-gray-300">Support Available</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-blue-500/25 flex items-center justify-center gap-3 group"
               >
                 Start Your Project
-                <ArrowRight size={18} />
-              </button>
-              <button 
-                className="border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-                style={{ 
-                  borderColor: 'var(--color-border)', 
-                  color: 'var(--color-text)' 
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#3b82f6';
-                  e.currentTarget.style.color = '#3b82f6';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--color-border)';
-                  e.currentTarget.style.color = 'var(--color-text)';
-                }}
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50"
               >
                 Schedule a Call
-              </button>
+              </motion.button>
+            </div>
+
+            {/* Contact Info */}
+            <div className="mt-12 pt-8 border-t border-white/20">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-300">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-sm">Available for new projects</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">Response time: {'< 24 hours'}</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

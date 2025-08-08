@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: "E-Commerce Platform Redesign",
     category: "Web Development",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+    image: "/portfolio-image1.jpeg",
     desc: "Complete platform overhaul resulting in 40% increase in conversions and enhanced user experience.",
     client: "RetailCo Global",
     duration: "3 months",
@@ -23,7 +23,7 @@ export const projects: Project[] = [
   {
     title: "Fintech Brand Identity",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    image: "/portfolio-image2.jpeg",
     desc: "Modern brand identity and digital presence for emerging fintech startup.",
     client: "FinStart Solutions",
     duration: "2 months",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   {
     title: "Enterprise SEO Campaign",
     category: "Digital Marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    image: "/portfolio-image3.jpeg",
     desc: "Comprehensive SEO strategy driving organic growth for SaaS platform.",
     client: "SaaSify Enterprise",
     duration: "6 months",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
   {
     title: "Content Strategy & Blog",
     category: "Content Strategy",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+    image: "/portfolio-image4.jpg",
     desc: "Strategic content development and thought leadership positioning.",
     client: "BizCorp Industries",
     duration: "4 months",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
   {
     title: "Mobile Banking App UI",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
+    image: "/portfolio-image5.jpeg",
     desc: "Intuitive mobile interface design focused on security and usability.",
     client: "Bankly Financial",
     duration: "4 months",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
   {
     title: "Product Launch Campaign",
     category: "Digital Marketing",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+    image: "/portfolio-image6.jpeg",
     desc: "Multi-channel marketing campaign for innovative product launch.",
     client: "LaunchPro Tech",
     duration: "2 months",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   {
     title: "Custom CMS Development",
     category: "Web Development",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
+    image: "/portfolio-image7.jpeg",
     desc: "Headless content management system for media publishing workflow.",
     client: "MediaX Publishing",
     duration: "5 months",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   {
     title: "Corporate Identity Design",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=300&fit=crop",
+    image: "/portfolio-image8.jpeg",
     desc: "Complete visual identity system for technology consulting firm.",
     client: "TechNest Consulting",
     duration: "3 months",
