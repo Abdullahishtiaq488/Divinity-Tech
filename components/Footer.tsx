@@ -118,7 +118,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="flex items-center gap-2 transition-colors hover:text-blue-400 group text-slate-400 dark:text-gray-500 hover:text-blue-400 no-underline"
+                    className="flex items-center gap-2 transition-colors hover:text-blue-400 group text-slate-400 dark:text-gray-500 no-underline"
                   >
                     <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
                     {link.name}

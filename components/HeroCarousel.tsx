@@ -28,7 +28,7 @@ const heroSlides: HeroSlide[] = [
     title: 'Transform Your Digital Presence',
     subtitle: 'Premium Web Development',
     description: 'We create stunning, high-performance websites that drive results. From concept to launch, we deliver exceptional digital experiences that set your business apart.',
-    backgroundImage: '/hero-web-dev.png',
+    backgroundImage: '/hero-web-dev.avif',
     primaryCTA: {
       text: 'Start Your Project',
       href: '/quote'
@@ -43,7 +43,7 @@ const heroSlides: HeroSlide[] = [
     title: 'Elevate Your Brand Identity',
     subtitle: 'Creative Design & Branding',
     description: 'Stand out with compelling visual design that tells your story. Our creative team crafts memorable brand experiences that resonate with your audience.',
-    backgroundImage: '/hero-design.png',
+    backgroundImage: '/hero-design.avif',
     primaryCTA: {
       text: 'Get Design Quote',
       href: '/quote'
@@ -58,7 +58,7 @@ const heroSlides: HeroSlide[] = [
     title: 'Accelerate Your Growth',
     subtitle: 'Digital Marketing Excellence',
     description: 'Reach more customers and boost your revenue with data-driven marketing strategies that deliver measurable results for your business.',
-    backgroundImage: '/hero-marketing.png',
+    backgroundImage: '/hero-marketing.avif',
     primaryCTA: {
       text: 'Grow My Business',
       href: '/quote'
