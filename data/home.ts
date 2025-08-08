@@ -5,33 +5,57 @@ export const services: Service[] = [
     id: "web-development",
     title: "Web Development",
     description: "Custom websites, e-commerce platforms, and web applications built for performance, scalability, and user experience.",
+    longDescription: "We create stunning, high-performance websites and web applications that drive results. From responsive design to complex e-commerce platforms, our development team delivers solutions that grow with your business.",
     icon: "code",
     color: "blue",
-    features: ["Responsive Design", "E-commerce Solutions", "Custom Web Apps", "Performance Optimization"]
+    price: "$3,000+",
+    duration: "4-8 weeks",
+    features: ["Responsive Design", "E-commerce Solutions", "Custom Web Apps", "Performance Optimization"],
+    includes: ["Responsive Design", "E-commerce", "Web Apps", "API Integration", "SEO Optimization"],
+    benefits: ["React/Next.js", "Mobile-First Design", "Performance Optimization", "Security Best Practices", "Ongoing Support"],
+    portfolio: ["/portfolio1.png", "/modern-website-design.png"]
   },
   {
     id: "graphic-design",
     title: "Graphic Design",
     description: "Creative visual solutions including logos, branding, and marketing materials that make your business stand out.",
+    longDescription: "Our creative team crafts compelling visual identities that resonate with your audience. From logo design to complete brand systems, we help you make a lasting impression.",
     icon: "palette",
     color: "purple",
-    features: ["Logo Design", "Brand Identity", "Marketing Materials", "UI/UX Design"]
+    price: "$1,500+",
+    duration: "2-4 weeks",
+    features: ["Logo Design", "Brand Identity", "Marketing Materials", "UI/UX Design"],
+    includes: ["Logo Design", "Brand Identity", "Print Materials", "Social Graphics", "Packaging"],
+    benefits: ["Brand Strategy", "Style Guides", "Print & Digital", "Unlimited Revisions", "Brand Guidelines"],
+    portfolio: ["/portfolio2.png", "/logo-design-portfolio.png"]
   },
   {
     id: "content-writing",
     title: "Content Writing",
     description: "Compelling website copy, engaging blog content, and marketing materials that connect with your audience.",
+    longDescription: "Compelling content that tells your story and drives action. Our writers create SEO-optimized content that engages your audience and converts visitors into customers.",
     icon: "file-text",
     color: "green",
-    features: ["Website Copy", "Blog Writing", "SEO Content", "Marketing Copy"]
+    price: "$800+",
+    duration: "1-3 weeks",
+    features: ["Website Copy", "Blog Writing", "SEO Content", "Marketing Copy"],
+    includes: ["Website Copy", "Blog Posts", "Ad Copy", "Product Descriptions", "Editing & Proofreading"],
+    benefits: ["SEO Optimization", "Brand Voice Development", "Content Strategy", "Performance Tracking", "Regular Updates"],
+    portfolio: ["/portfolio4.png", "/content-writing-samples.png"]
   },
   {
     id: "digital-marketing",
     title: "Digital Marketing",
     description: "Comprehensive digital marketing strategies including SEO, social media, and PPC advertising to grow your online presence.",
+    longDescription: "Comprehensive digital marketing strategies that drive traffic, generate leads, and increase revenue. We use data-driven approaches to maximize your ROI.",
     icon: "bar-chart",
     color: "orange",
-    features: ["SEO Optimization", "Social Media", "PPC Advertising", "Analytics & Reporting"]
+    price: "$1,200+",
+    duration: "Ongoing",
+    features: ["SEO Optimization", "Social Media", "PPC Advertising", "Analytics & Reporting"],
+    includes: ["SEO", "Social Media", "PPC", "Email Marketing", "Analytics"],
+    benefits: ["Campaign Management", "Performance Analytics", "A/B Testing", "Conversion Optimization", "Monthly Reports"],
+    portfolio: ["/portfolio3.png", "/digital-marketing-results.png"]
   }
 ];
 

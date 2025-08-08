@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Code, PenTool, FileText, BarChart2, Star, Users, ShieldCheck, Sparkles, Calendar, ArrowRight, ExternalLink, Quote } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Code, PenTool, FileText, BarChart2, Star, Users, ShieldCheck, Sparkles, Calendar, ArrowRight, ExternalLink, Quote, X, CheckCircle, DollarSign, Clock } from 'lucide-react';
 import Image from "next/image";
 import Link from "next/link";
 import { services, portfolioPreview, testimonials, clients, trustIndicators } from "@/data/home";
+import { Service } from "@/types/home";
 import HeroCarousel from "@/components/HeroCarousel";
 
 const iconMap = {
@@ -19,33 +21,55 @@ const iconMap = {
 };
 
 const colorMap = {
-  blue: "from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500",
-  purple: "from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500",
-  green: "from-green-500 to-green-600 dark:from-green-400 dark:to-green-500",
-  orange: "from-orange-500 to-orange-600 dark:from-orange-400 dark:to-orange-500"
+  blue: { bg: '#dbeafe', text: '#2563eb', border: '#93c5fd' },
+  purple: { bg: '#f3e8ff', text: '#9333ea', border: '#c084fc' },
+  green: { bg: '#dcfce7', text: '#16a34a', border: '#86efac' },
+  orange: { bg: '#fed7aa', text: '#ea580c', border: '#fdba74' }
 };
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+
+  const getIcon = (iconName: string) => {
+    const IconComponent = iconMap[iconName as keyof typeof iconMap];
+    return IconComponent ? <IconComponent size={28} /> : <Code size={28} />;
+  };
+
   return (
-    <div className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)' }}>
       {/* Professional Hero - Clean & Elegant */}
       <HeroCarousel />
 
-      {/* Services Overview */}
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
+      {/* Services Overview - Enhanced */}
+      <section className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 bg-[var(--color-accent)]/10 text-[var(--color-accent)] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[var(--color-accent)]/20">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
+              style={{ 
+                backgroundColor: '#f3e8ff', 
+                color: '#9333ea', 
+                borderColor: '#c084fc' 
+              }}
+            >
               <Sparkles size={16} />
               <span>Our Expertise</span>
             </div>
-            <h2 className="text-4xl font-bold text-[var(--color-text)] mb-4">Our Services</h2>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+              Our <span style={{ color: '#3b82f6' }}>Services</span>
+            </h2>
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               Comprehensive digital solutions designed to elevate your business and drive measurable results.
             </p>
           </motion.div>
@@ -53,7 +77,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const IconComponent = iconMap[service.icon as keyof typeof iconMap];
-              const gradientClass = colorMap[service.color as keyof typeof colorMap];
+              const color = colorMap[service.color as keyof typeof colorMap];
               
               return (
                 <motion.div
@@ -62,22 +86,39 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group bg-[var(--color-surface)] rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 hover:-translate-y-2"
+                  className="group rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 border-2 hover:-translate-y-2 cursor-pointer"
+                  style={{ 
+                    backgroundColor: 'var(--color-surface)', 
+                    borderColor: 'var(--color-border)' 
+                  }}
+                  onClick={() => setSelectedService(service)}
                 >
-                  <div className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r ${gradientClass} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent size={28} className="text-white" />
+                  <div 
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 border-2"
+                    style={{ 
+                      backgroundColor: color.bg, 
+                      color: color.text, 
+                      borderColor: color.border 
+                    }}
+                  >
+                    <IconComponent />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-[var(--color-text)] mb-3">{service.title}</h3>
-                  <p className="text-[var(--color-text-secondary)] mb-4 leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{service.title}</h3>
+                  <p className="mb-4 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{service.description}</p>
                   
                   <div className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
-                        <div className="w-1.5 h-1.5 bg-[var(--color-accent)] rounded-full" />
+                      <div key={idx} className="flex items-center gap-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: color.text }} />
                         <span>{feature}</span>
                       </div>
                     ))}
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t flex items-center justify-between" style={{ borderColor: 'var(--color-border)' }}>
+                    <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>Learn More</span>
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" style={{ color: color.text }} />
                   </div>
                 </motion.div>
               );
@@ -86,8 +127,11 @@ export default function Home() {
           
           <div className="text-center mt-12">
             <Link 
-              href="/services" 
-              className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              href="/services"
+              className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              style={{ backgroundColor: '#3b82f6' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
             >
               View All Services
               <ArrowRight size={18} />
@@ -96,68 +140,219 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Preview */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-[var(--color-surface)]">
+      {/* Service Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border-2"
+              style={{ 
+                backgroundColor: 'var(--color-surface)', 
+                borderColor: 'var(--color-border)' 
+              }}
+            >
+              <div className="relative p-8">
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="absolute top-6 right-6 rounded-full p-2 transition-colors border-2"
+                  style={{ 
+                    backgroundColor: 'var(--color-muted)', 
+                    borderColor: 'var(--color-border)' 
+                  }}
+                >
+                  <X size={20} style={{ color: 'var(--color-text)' }} />
+                </button>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="md:col-span-2">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div style={{ color: '#3b82f6' }}>{getIcon(selectedService.icon)}</div>
+                      <h2 className="text-3xl font-bold" style={{ color: 'var(--color-text)' }}>{selectedService.title}</h2>
+                    </div>
+                    
+                    <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--color-text-secondary)' }}>
+                      {selectedService.longDescription}
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                      <div>
+                        <h4 className="font-semibold mb-3" style={{ color: 'var(--color-text)' }}>What's Included</h4>
+                        <div className="space-y-2">
+                          {selectedService.includes.map((item) => (
+                            <div key={item} className="flex items-center gap-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                              <CheckCircle size={16} style={{ color: '#16a34a' }} />
+                              {item}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-semibold mb-3" style={{ color: 'var(--color-text)' }}>Key Benefits</h4>
+                        <div className="space-y-2">
+                          {selectedService.benefits.map((benefit) => (
+                            <div key={benefit} className="flex items-center gap-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                              <Star size={16} style={{ color: '#3b82f6' }} />
+                              {benefit}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      {selectedService.portfolio.map((image, index) => (
+                        <div key={index} className="relative rounded-xl overflow-hidden border-2" style={{ borderColor: 'var(--color-border)' }}>
+                          <Image
+                            src={image || "/placeholder.svg"}
+                            alt={`${selectedService.title} portfolio ${index + 1}`}
+                            width={300}
+                            height={200}
+                            className="w-full h-32 object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div 
+                      className="rounded-xl p-6 border-2"
+                      style={{ 
+                        backgroundColor: '#dbeafe', 
+                        borderColor: '#93c5fd' 
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <DollarSign size={20} style={{ color: '#3b82f6' }} />
+                        <span className="font-semibold" style={{ color: 'var(--color-text)' }}>Starting Price</span>
+                      </div>
+                      <div className="text-3xl font-bold mb-2" style={{ color: '#3b82f6' }}>{selectedService.price}</div>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Custom pricing based on project scope</p>
+                    </div>
+
+                    <div 
+                      className="rounded-xl p-6 border-2"
+                      style={{ 
+                        backgroundColor: 'var(--color-muted)', 
+                        borderColor: 'var(--color-border)' 
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <Clock size={20} style={{ color: 'var(--color-text-secondary)' }} />
+                        <span className="font-semibold" style={{ color: 'var(--color-text)' }}>Timeline</span>
+                      </div>
+                      <div className="text-xl font-bold mb-2" style={{ color: 'var(--color-text)' }}>{selectedService.duration}</div>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Typical project duration</p>
+                    </div>
+
+                    <button 
+                      className="w-full text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300"
+                      style={{ backgroundColor: '#3b82f6' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+                    >
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Portfolio Preview - Enhanced */}
+      <section className="py-20 px-4 md:px-8 lg:px-16" style={{ backgroundColor: 'var(--color-surface)' }}>
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-[var(--color-text)] mb-4">Featured Projects</h2>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+              Featured <span style={{ color: '#3b82f6' }}>Projects</span>
+            </h2>
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               Discover some of our recent work and see how we've helped businesses achieve their digital goals.
             </p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioPreview.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group bg-[var(--color-background)] rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 hover:scale-105"
-              >
-                <div className="relative overflow-hidden">
-                  <div className="aspect-[4/3] relative">
-                    <Image 
-                      src={project.image || "/placeholder.svg?height=240&width=320&query=project showcase"} 
-                      alt={project.title} 
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-[var(--color-accent)] px-3 py-1 rounded-full text-xs font-semibold border border-[var(--color-accent)]/20">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
-                      <ExternalLink size={16} className="text-[var(--color-accent)]" />
+            {portfolioPreview.map((project, index) => {
+              const colors = [
+                { bg: '#dbeafe', text: '#2563eb' },
+                { bg: '#dcfce7', text: '#16a34a' },
+                { bg: '#f3e8ff', text: '#9333ea' },
+                { bg: '#fed7aa', text: '#ea580c' }
+              ];
+              const color = colors[index % colors.length];
+              
+              return (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:scale-105"
+                  style={{ 
+                    backgroundColor: 'var(--color-background)', 
+                    borderColor: 'var(--color-border)' 
+                  }}
+                >
+                  <div className="relative overflow-hidden">
+                    <div className="aspect-[4/3] relative">
+                      <Image 
+                        src={project.image || "/placeholder.svg?height=240&width=320&query=project showcase"}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    
+                    <div className="absolute top-4 left-4">
+                      <span 
+                        className="px-3 py-1 rounded-full text-xs font-semibold border-2"
+                        style={{ 
+                          backgroundColor: color.bg, 
+                          color: color.text, 
+                          borderColor: color.text 
+                        }}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+                    
+                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 border-2" style={{ borderColor: color.text }}>
+                        <ExternalLink size={16} style={{ color: color.text }} />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-accent)] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors" style={{ color: 'var(--color-text)' }}>
+                      {project.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{project.description}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
           
           <div className="text-center mt-12">
             <Link 
-              href="/portfolio" 
-              className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              href="/portfolio"
+              className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              style={{ backgroundColor: '#3b82f6' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
             >
               See All Projects
               <ArrowRight size={18} />
@@ -166,16 +361,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-6xl mx-auto">
+      {/* Testimonials - Enhanced */}
+      <section className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1500"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-[var(--color-text)] mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+              What Our <span style={{ color: '#3b82f6' }}>Clients Say</span>
+            </h2>
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               Don't just take our word for it. Here's what our clients say about working with us.
             </p>
           </motion.div>
@@ -187,9 +390,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-[var(--color-surface)] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-border)] relative"
+                className="rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border-2 relative"
+                style={{ 
+                  backgroundColor: 'var(--color-surface)', 
+                  borderColor: 'var(--color-border)' 
+                }}
               >
-                <Quote size={24} className="text-[var(--color-accent)] mb-4" />
+                <Quote size={24} className="mb-4" style={{ color: '#3b82f6' }} />
                 
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -197,22 +404,22 @@ export default function Home() {
                   ))}
                 </div>
                 
-                <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <p className="mb-6 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>"{testimonial.text}"</p>
                 
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 relative rounded-full overflow-hidden">
+                  <div className="w-12 h-12 relative rounded-full overflow-hidden border-2" style={{ borderColor: '#3b82f6' }}>
                     <Image 
-                      src={testimonial.avatar || "/placeholder.svg?height=48&width=48&query=professional headshot"} 
-                      alt={testimonial.name} 
+                      src={testimonial.avatar || "/placeholder.svg?height=48&width=48&query=professional headshot"}
+                      alt={testimonial.name}
                       fill
                       sizes="48px"
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <p className="font-semibold text-[var(--color-text)]">{testimonial.name}</p>
-                    <p className="text-sm text-[var(--color-text-secondary)]">{testimonial.position}</p>
-                    <p className="text-sm text-[var(--color-accent)]">{testimonial.company}</p>
+                    <p className="font-semibold" style={{ color: 'var(--color-text)' }}>{testimonial.name}</p>
+                    <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{testimonial.position}</p>
+                    <p className="text-sm" style={{ color: '#3b82f6' }}>{testimonial.company}</p>
                   </div>
                 </div>
               </motion.div>
@@ -221,8 +428,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Indicators & Client Logos - Professional Redesign */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-[var(--color-surface)]">
+      {/* Trust Indicators & Client Logos - Enhanced */}
+      <section className="py-20 px-4 md:px-8 lg:px-16" style={{ backgroundColor: 'var(--color-surface)' }}>
         <div className="max-w-7xl mx-auto">
           {/* Why Choose Us */}
           <motion.div
@@ -230,10 +437,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-[var(--color-text)] mb-4">
-              Why Choose <span className="text-[var(--color-accent)]">Divinity Tech</span>?
+            <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+              Why Choose <span style={{ color: '#3b82f6' }}>Divinity Tech</span>?
             </h2>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               We combine expertise, innovation, and dedication to deliver exceptional results for your business.
             </p>
           </motion.div>
@@ -242,20 +449,39 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {trustIndicators.map((indicator, index) => {
               const IconComponent = iconMap[indicator.icon as keyof typeof iconMap];
+              const colors = [
+                { bg: '#dbeafe', text: '#2563eb', border: '#93c5fd' },
+                { bg: '#dcfce7', text: '#16a34a', border: '#86efac' },
+                { bg: '#f3e8ff', text: '#9333ea', border: '#c084fc' },
+                { bg: '#fed7aa', text: '#ea580c', border: '#fdba74' }
+              ];
+              const color = colors[index % colors.length];
+              
               return (
                 <motion.div
                   key={indicator.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-[var(--color-background)] rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 border border-[var(--color-border)] group hover:border-[var(--color-accent)]/30"
+                  className="rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 border-2 group"
+                  style={{ 
+                    backgroundColor: 'var(--color-background)', 
+                    borderColor: 'var(--color-border)' 
+                  }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--color-accent)]/10 rounded-2xl mb-4 group-hover:bg-[var(--color-accent)]/20 transition-colors">
-                    <IconComponent size={32} className="text-[var(--color-accent)]" />
+                  <div 
+                    className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300 border-2"
+                    style={{ 
+                      backgroundColor: color.bg, 
+                      color: color.text, 
+                      borderColor: color.border 
+                    }}
+                  >
+                    <IconComponent size={32} />
                   </div>
-                  <div className="text-3xl font-bold text-[var(--color-text)] mb-2">{indicator.value}</div>
-                  <div className="text-lg font-semibold text-[var(--color-text)] mb-2">{indicator.title}</div>
-                  <div className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{indicator.description}</div>
+                  <div className="text-3xl font-bold mb-2" style={{ color: 'var(--color-text)' }}>{indicator.value}</div>
+                  <div className="text-lg font-semibold mb-2" style={{ color: 'var(--color-text)' }}>{indicator.title}</div>
+                  <div className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{indicator.description}</div>
                 </motion.div>
               );
             })}
@@ -268,7 +494,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold text-[var(--color-text)] mb-8">Trusted by Leading Brands</h3>
+            <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-text)' }}>Trusted by Leading Brands</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {clients.map((client, index) => (
                 <motion.div
@@ -276,12 +502,16 @@ export default function Home() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-[var(--color-background)] rounded-xl p-4 flex items-center justify-center hover:shadow-md transition-all duration-300 border border-[var(--color-border)] hover:border-[var(--color-accent)]/30 group"
+                  className="rounded-xl p-4 flex items-center justify-center hover:shadow-md transition-all duration-300 border-2 group"
+                  style={{ 
+                    backgroundColor: 'var(--color-background)', 
+                    borderColor: 'var(--color-border)' 
+                  }}
                 >
                   <div className="w-20 h-12 relative">
                     <Image 
-                      src={client.logo || "/placeholder.svg?height=48&width=80&query=company logo"} 
-                      alt={client.name} 
+                      src={client.logo || "/placeholder.svg?height=48&width=80&query=company logo"}
+                      alt={client.name}
                       fill
                       sizes="80px"
                       className="object-contain opacity-60 group-hover:opacity-100 transition-opacity"
@@ -294,28 +524,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Contact CTA - Enhanced */}
+      <section className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <h2 className="text-4xl font-bold text-[var(--color-text)] mb-6">Ready to Start Your Project?</h2>
-            <p className="text-xl text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6" style={{ color: 'var(--color-text)' }}>
+              Ready to Start Your <span style={{ color: '#3b82f6' }}>Project</span>?
+            </h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               Contact us today for a free consultation and discover how Divinity Tech can help your business thrive in the digital landscape.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="/contact" 
-                className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                href="/contact"
+                className="text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                style={{ backgroundColor: '#3b82f6' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
               >
                 Contact Us Today
                 <ArrowRight size={18} />
               </Link>
               <Link 
-                href="/quote" 
-                className="border-2 border-[var(--color-border)] text-[var(--color-text)] px-8 py-4 rounded-xl font-semibold hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
+                href="/quote"
+                className="border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+                style={{ 
+                  borderColor: 'var(--color-border)', 
+                  color: 'var(--color-text)' 
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#3b82f6';
+                  e.currentTarget.style.color = '#3b82f6';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-border)';
+                  e.currentTarget.style.color = 'var(--color-text)';
+                }}
               >
                 Get Free Quote
               </Link>

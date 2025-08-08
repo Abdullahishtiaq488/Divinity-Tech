@@ -65,12 +65,23 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)]">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 md:px-8 lg:px-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)]/5 to-purple-600/5" />
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background)' }}>
+      {/* Hero Section - Enhanced with animated background */}
+      <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden" style={{ backgroundColor: 'var(--color-surface)' }}>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
+        </div>
+        
         <div className="relative max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-[var(--color-accent)]/10 text-[var(--color-accent)] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[var(--color-accent)]/20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2" 
+               style={{ 
+                 backgroundColor: 'rgba(34, 197, 94, 0.1)', 
+                 color: '#22c55e', 
+                 borderColor: 'rgba(34, 197, 94, 0.3)' 
+               }}>
             <Users size={16} />
             <span>Let's Work Together</span>
           </div>
@@ -79,38 +90,50 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-6xl font-bold text-[var(--color-text)] mb-6 leading-tight"
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            style={{ color: 'var(--color-text)' }}
           >
-            Get In <span className="text-[var(--color-accent)]">Touch</span>
+            Get In <span style={{ color: '#3b82f6' }}>Touch</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-xl text-[var(--color-text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
+            style={{ color: 'var(--color-text-secondary)' }}
           >
             Ready to transform your digital presence? We're here to help you succeed. 
             Reach out and our team will respond within 1 business day.
           </motion.p>
 
-          {/* Trust Indicators */}
+          {/* Trust Indicators - Enhanced with individual colors */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { icon: <Zap size={20} />, text: "Fast Response" },
-              { icon: <Shield size={20} />, text: "Secure & Private" },
-              { icon: <Award size={20} />, text: "Expert Team" },
-              { icon: <CheckCircle size={20} />, text: "Free Consultation" }
+              { icon: <Zap size={32} />, text: "Fast Response", bgColor: '#fef3c7', textColor: '#d97706', borderColor: '#fbbf24' },
+              { icon: <Shield size={32} />, text: "Secure & Private", bgColor: '#dcfce7', textColor: '#16a34a', borderColor: '#22c55e' },
+              { icon: <Award size={32} />, text: "Expert Team", bgColor: '#f3e8ff', textColor: '#9333ea', borderColor: '#a855f7' },
+              { icon: <CheckCircle size={32} />, text: "Free Consultation", bgColor: '#dbeafe', textColor: '#2563eb', borderColor: '#3b82f6' }
             ].map((item, index) => (
               <motion.div
                 key={item.text}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + index * 0.1 }}
-                className="flex flex-col items-center gap-2 text-center"
+                className="flex flex-col items-center gap-3 text-center p-6 rounded-2xl border-2 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: 'var(--color-background)' }}
               >
-                <div className="text-[var(--color-accent)]">{item.icon}</div>
-                <span className="text-sm font-medium text-[var(--color-text-secondary)]">{item.text}</span>
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center border-2"
+                  style={{ 
+                    backgroundColor: item.bgColor, 
+                    color: item.textColor, 
+                    borderColor: item.borderColor 
+                  }}
+                >
+                  {item.icon}
+                </div>
+                <span className="text-sm font-medium" style={{ color: 'var(--color-text)' }}>{item.text}</span>
               </motion.div>
             ))}
           </div>
@@ -118,17 +141,17 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods & Form */}
-      <section className="px-4 md:px-8 lg:px-16 pb-20">
+      <section className="px-4 md:px-8 lg:px-16 py-32">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-[var(--color-text)] mb-6">
-                  Contact <span className="text-[var(--color-accent)]">Information</span>
+                <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--color-text)' }}>
+                  Contact <span style={{ color: '#3b82f6' }}>Information</span>
                 </h2>
-                <p className="text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+                <p className="mb-8 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                   Choose the method that works best for you. We're available through multiple channels 
                   and always ready to discuss your project needs.
                 </p>
@@ -148,25 +171,49 @@ export default function ContactPage() {
                     {method.href ? (
                       <a 
                         href={method.href}
-                        className="flex items-center gap-4 p-6 bg-[var(--color-surface)] rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 hover:scale-105"
+                        className="flex items-center gap-4 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border-2 hover:scale-105"
+                        style={{ 
+                          backgroundColor: 'var(--color-surface)', 
+                          borderColor: 'var(--color-border)' 
+                        }}
                       >
-                        <div className="flex-shrink-0 w-12 h-12 bg-[var(--color-accent)]/10 rounded-xl flex items-center justify-center text-[var(--color-accent)] group-hover:scale-110 transition-transform">
+                        <div 
+                          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform border"
+                          style={{ 
+                            backgroundColor: '#dbeafe', 
+                            color: '#3b82f6', 
+                            borderColor: '#93c5fd' 
+                          }}
+                        >
                           {getIcon(method.icon)}
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-[var(--color-text)] mb-1">{method.label}</h3>
-                          <p className="text-[var(--color-text-secondary)]">{method.value}</p>
+                          <h3 className="font-semibold mb-1" style={{ color: 'var(--color-text)' }}>{method.label}</h3>
+                          <p style={{ color: 'var(--color-text-secondary)' }}>{method.value}</p>
                         </div>
-                        <ExternalLink size={16} className="text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent)] transition-colors" />
+                        <ExternalLink size={16} className="group-hover:text-blue-600 transition-colors" style={{ color: 'var(--color-text-secondary)' }} />
                       </a>
                     ) : (
-                      <div className="flex items-center gap-4 p-6 bg-[var(--color-surface)] rounded-2xl shadow-sm border border-[var(--color-border)]">
-                        <div className="flex-shrink-0 w-12 h-12 bg-[var(--color-accent)]/10 rounded-xl flex items-center justify-center text-[var(--color-accent)]">
+                      <div 
+                        className="flex items-center gap-4 p-6 rounded-2xl shadow-sm border-2"
+                        style={{ 
+                          backgroundColor: 'var(--color-surface)', 
+                          borderColor: 'var(--color-border)' 
+                        }}
+                      >
+                        <div 
+                          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border"
+                          style={{ 
+                            backgroundColor: '#dbeafe', 
+                            color: '#3b82f6', 
+                            borderColor: '#93c5fd' 
+                          }}
+                        >
                           {getIcon(method.icon)}
                         </div>
                         <div>
-                          <h3 className="font-semibold text-[var(--color-text)] mb-1">{method.label}</h3>
-                          <p className="text-[var(--color-text-secondary)]">{method.value}</p>
+                          <h3 className="font-semibold mb-1" style={{ color: 'var(--color-text)' }}>{method.label}</h3>
+                          <p style={{ color: 'var(--color-text-secondary)' }}>{method.value}</p>
                         </div>
                       </div>
                     )}
@@ -175,16 +222,22 @@ export default function ContactPage() {
               </div>
 
               {/* Office Hours */}
-              <div className="bg-[var(--color-accent)]/5 rounded-2xl p-6 border border-[var(--color-accent)]/20">
-                <h3 className="font-semibold text-[var(--color-text)] mb-4 flex items-center gap-2">
-                  <Clock size={20} className="text-[var(--color-accent)]" />
+              <div 
+                className="rounded-2xl p-6 border-2"
+                style={{ 
+                  backgroundColor: 'var(--color-muted)', 
+                  borderColor: 'var(--color-border)' 
+                }}
+              >
+                <h3 className="font-semibold mb-4 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+                  <Clock size={20} style={{ color: '#16a34a' }} />
                   Office Hours
                 </h3>
                 <div className="space-y-2">
                   {officeHours.map((schedule, index) => (
                     <div key={index} className="flex justify-between items-center">
-                      <span className="text-[var(--color-text-secondary)]">{schedule.day}</span>
-                      <span className="font-medium text-[var(--color-text)]">{schedule.hours}</span>
+                      <span style={{ color: 'var(--color-text-secondary)' }}>{schedule.day}</span>
+                      <span className="font-medium" style={{ color: 'var(--color-text)' }}>{schedule.hours}</span>
                     </div>
                   ))}
                 </div>
@@ -192,12 +245,18 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-[var(--color-surface)] rounded-3xl shadow-lg p-8 border border-[var(--color-border)]">
+            <div 
+              className="rounded-3xl shadow-xl p-8 border-2"
+              style={{ 
+                backgroundColor: 'var(--color-surface)', 
+                borderColor: 'var(--color-border)' 
+              }}
+            >
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-[var(--color-text)] mb-4">
-                  Send Us a <span className="text-[var(--color-accent)]">Message</span>
+                <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+                  Send Us a <span style={{ color: '#3b82f6' }}>Message</span>
                 </h2>
-                <p className="text-[var(--color-text-secondary)]">
+                <p style={{ color: 'var(--color-text-secondary)' }}>
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
               </div>
@@ -213,7 +272,7 @@ export default function ContactPage() {
                   >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                        <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                           Full Name *
                         </label>
                         <input
@@ -221,13 +280,18 @@ export default function ContactPage() {
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                          style={{ 
+                            backgroundColor: 'var(--color-background)', 
+                            borderColor: 'var(--color-border)', 
+                            color: 'var(--color-text)' 
+                          }}
                           placeholder="John Doe"
                           required
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                        <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                           Email Address *
                         </label>
                         <input
@@ -235,7 +299,12 @@ export default function ContactPage() {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                          style={{ 
+                            backgroundColor: 'var(--color-background)', 
+                            borderColor: 'var(--color-border)', 
+                            color: 'var(--color-text)' 
+                          }}
                           placeholder="john@example.com"
                           required
                         />
@@ -243,14 +312,19 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                         Service Interest
                       </label>
                       <select
                         name="service"
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        style={{ 
+                          backgroundColor: 'var(--color-background)', 
+                          borderColor: 'var(--color-border)', 
+                          color: 'var(--color-text)' 
+                        }}
                       >
                         <option value="">Select a service</option>
                         {serviceOptions.map((service) => (
@@ -261,7 +335,7 @@ export default function ContactPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                        <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                           Budget Range
                         </label>
                         <input
@@ -269,12 +343,17 @@ export default function ContactPage() {
                           name="budget"
                           value={formData.budget}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                          style={{ 
+                            backgroundColor: 'var(--color-background)', 
+                            borderColor: 'var(--color-border)', 
+                            color: 'var(--color-text)' 
+                          }}
                           placeholder="$5,000 - $10,000"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                        <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                           Timeline
                         </label>
                         <input
@@ -282,14 +361,19 @@ export default function ContactPage() {
                           name="timeline"
                           value={formData.timeline}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                          style={{ 
+                            backgroundColor: 'var(--color-background)', 
+                            borderColor: 'var(--color-border)', 
+                            color: 'var(--color-text)' 
+                          }}
                           placeholder="2-3 months"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[var(--color-text)] mb-2">
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-text)' }}>
                         Project Details *
                       </label>
                       <textarea
@@ -297,7 +381,12 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={handleInputChange}
                         rows={5}
-                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+                        style={{ 
+                          backgroundColor: 'var(--color-background)', 
+                          borderColor: 'var(--color-border)', 
+                          color: 'var(--color-text)' 
+                          }}
                         placeholder="Tell us about your project, goals, and any specific requirements..."
                         required
                       />
@@ -306,7 +395,10 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-[var(--color-accent)] to-purple-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full text-white font-semibold py-4 rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      style={{ backgroundColor: '#3b82f6' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
                     >
                       {isSubmitting ? (
                         <>
@@ -328,11 +420,17 @@ export default function ContactPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12"
                   >
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle size={32} className="text-green-600" />
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2"
+                      style={{ 
+                        backgroundColor: '#dcfce7', 
+                        borderColor: '#bbf7d0' 
+                      }}
+                    >
+                      <CheckCircle size={32} style={{ color: '#16a34a' }} />
                     </div>
-                    <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2">Message Sent!</h3>
-                    <p className="text-[var(--color-text-secondary)]">
+                    <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--color-text)' }}>Message Sent!</h3>
+                    <p style={{ color: 'var(--color-text-secondary)' }}>
                       Thank you for reaching out. We'll get back to you within 24 hours.
                     </p>
                   </motion.div>
@@ -343,14 +441,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FAQ Section - FIXED */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-[var(--color-surface)]">
+      {/* FAQ Section - FIXED with proper contrast and beautiful colors */}
+      <section className="py-32 px-4 md:px-8 lg:px-16" style={{ backgroundColor: 'var(--color-surface)' }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">
-              Frequently Asked <span className="text-[var(--color-accent)]">Questions</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+              Frequently Asked <span style={{ color: '#3b82f6' }}>Questions</span>
             </h2>
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
               Find answers to common questions about our services and process.
             </p>
           </div>
@@ -363,21 +461,42 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-[var(--color-background)] rounded-2xl shadow-sm border border-[var(--color-border)] overflow-hidden"
+                className="rounded-2xl shadow-sm border-2 transition-all duration-300 overflow-hidden hover:shadow-lg"
+                style={{ 
+                  backgroundColor: expandedFAQ === index ? 'var(--color-muted)' : 'var(--color-background)',
+                  borderColor: expandedFAQ === index ? '#3b82f6' : 'var(--color-border)'
+                }}
               >
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[var(--color-surface)] transition-colors"
+                  className="w-full px-6 py-5 text-left flex items-center justify-between transition-all duration-300"
+                  style={{ 
+                    backgroundColor: expandedFAQ === index ? 'var(--color-muted)' : 'transparent'
+                  }}
                 >
-                  <div className="flex items-center gap-3">
-                    <HelpCircle size={20} className="text-[var(--color-accent)] flex-shrink-0" />
-                    <span className="font-semibold text-[var(--color-text)]">{faq.question}</span>
+                  <div className="flex items-center gap-4">
+                    <div 
+                      className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 border-2"
+                      style={{ 
+                        backgroundColor: expandedFAQ === index ? '#3b82f6' : '#dbeafe',
+                        color: expandedFAQ === index ? 'white' : '#3b82f6',
+                        borderColor: '#3b82f6'
+                      }}
+                    >
+                      <HelpCircle size={20} />
+                    </div>
+                    <span className="font-semibold text-lg" style={{ color: 'var(--color-text)' }}>{faq.question}</span>
                   </div>
-                  {expandedFAQ === index ? (
-                    <ChevronUp size={20} className="text-[var(--color-text-secondary)]" />
-                  ) : (
-                    <ChevronDown size={20} className="text-[var(--color-text-secondary)]" />
-                  )}
+                  <div 
+                    className="transition-all duration-300"
+                    style={{ color: expandedFAQ === index ? '#3b82f6' : 'var(--color-text-secondary)' }}
+                  >
+                    {expandedFAQ === index ? (
+                      <ChevronUp size={24} />
+                    ) : (
+                      <ChevronDown size={24} />
+                    )}
+                  </div>
                 </button>
                 
                 <AnimatePresence>
@@ -386,11 +505,21 @@ export default function ContactPage() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-4 pl-11">
-                        <p className="text-[var(--color-text-secondary)] leading-relaxed">{faq.answer}</p>
+                      <div className="px-6 pb-6 pt-4 pl-20">
+                        <div 
+                          className="rounded-xl p-5 border-2 shadow-sm"
+                          style={{ 
+                            backgroundColor: 'var(--color-surface)', 
+                            borderColor: 'var(--color-border)' 
+                          }}
+                        >
+                          <p className="leading-relaxed text-base" style={{ color: 'var(--color-text)' }}>
+                            {faq.answer}
+                          </p>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -401,34 +530,65 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-r from-[var(--color-accent)] to-purple-700">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* CTA Section - Enhanced with better colors */}
+      <section className="relative py-32 px-4 md:px-8 lg:px-16 overflow-hidden" style={{ backgroundColor: '#1e293b' }}>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
+              style={{ 
+                backgroundColor: '#dcfce7', 
+                color: '#16a34a', 
+                borderColor: '#bbf7d0' 
+              }}
+            >
+              <Award size={16} />
+              <span>Ready to Get Started?</span>
+            </div>
+            
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
               Join hundreds of satisfied clients who have transformed their businesses with our help.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[var(--color-accent)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <button 
+                className="text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg hover:shadow-xl"
+                style={{ backgroundColor: '#3b82f6' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
+              >
                 Schedule Free Consultation
               </button>
-              <button className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:border-white hover:bg-white/10 transition-colors backdrop-blur-sm">
+              <button className="border-2 border-slate-400 text-white px-8 py-4 rounded-xl font-semibold hover:border-white hover:bg-white/10 transition-colors">
                 View Our Portfolio
               </button>
             </div>
-
-            <div className="mt-12 text-center">
-              <p className="text-blue-100 font-medium">
-                ⚡ We guarantee a response within 1 business day
-              </p>
+            
+            <div className="text-center">
+              <div 
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2"
+                style={{ 
+                  backgroundColor: '#fef3c7', 
+                  color: '#d97706', 
+                  borderColor: '#fbbf24' 
+                }}
+              >
+                <Zap size={16} />
+                <span className="font-medium">We guarantee a response within 1 business day</span>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,10 +1,17 @@
 export interface Service {
+
   id: string;
   title: string;
   description: string;
+  longDescription: string;
   icon: string;
   color: string;
+  price: string;
+  duration: string;
   features: string[];
+  includes: string[];
+  benefits: string[];
+  portfolio: string[];
 }
 
 export interface PortfolioItem {
