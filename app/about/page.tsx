@@ -93,11 +93,14 @@ export default function AboutPage() {
                 <div className="aspect-[4/3] relative">
                   <Image 
                     src="/team-photo.png"
-                    alt="Divinity Tech Team"
+                    alt="Devnity Tech Team - Professional software development team"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                     priority
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
@@ -282,21 +285,37 @@ export default function AboutPage() {
                 <div className="relative overflow-hidden">
                   <div className="aspect-[4/3] relative">
                     <Image 
-                      src={member.image || "/placeholder.svg?height=300&width=400&query=professional headshot"}
-                      alt={member.name}
+                      src={member.image || "/placeholder-avatar.webp"}
+                      alt={`${member.name} - ${member.role} at Devnity Tech`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      quality={85}
+                      loading={index < 3 ? "eager" : "lazy"}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   
                   {/* Social Links */}
                   <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a href={member.linkedin} className="bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors">
+                    <a 
+                      href={member.linkedin} 
+                      className="bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
+                      aria-label={`${member.name} LinkedIn Profile`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Linkedin size={16} style={{ color: '#3b82f6' }} />
                     </a>
-                    <a href={member.twitter} className="bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors">
+                    <a 
+                      href={member.twitter} 
+                      className="bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
+                      aria-label={`${member.name} Twitter Profile`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Twitter size={16} style={{ color: '#1d9bf0' }} />
                     </a>
                   </div>
@@ -380,10 +399,13 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/modern-office-collaboration.png"
-            alt="Team collaboration"
+            alt="Modern office collaboration environment"
             fill
             className="object-cover"
-            priority
+            quality={85}
+            priority={false}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
           {/* Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
