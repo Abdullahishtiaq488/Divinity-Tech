@@ -10,8 +10,8 @@ export const contactMethods: ContactMethod[] = [
   {
     icon: "Phone",
     label: "Call Us",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567"
+    value: "+1 (410) 756-0672",
+    href: "tel:+14107560672"
   },
   {
     icon: "MapPin",

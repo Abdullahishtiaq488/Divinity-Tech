@@ -160,6 +160,7 @@ export default function PrivacyPage() {
                 key={section.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border-2"
@@ -206,6 +207,8 @@ export default function PrivacyPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="rounded-2xl p-8 mt-12 border-2"
+            id='cookies'
+            
             style={{ 
               backgroundColor: '#fef3c7', 
               borderColor: '#fbbf24' 

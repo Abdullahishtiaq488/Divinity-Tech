@@ -135,12 +135,12 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const clients: Client[] = [
-  { id: "retailco", name: "RetailCo", logo: "/client1.png", website: "https://retailco.com" },
-  { id: "finstart", name: "FinStart", logo: "/client2.png", website: "https://finstart.com" },
-  { id: "saasify", name: "SaaSify", logo: "/client3.png", website: "https://saasify.com" },
-  { id: "bankly", name: "Bankly", logo: "/client4.png", website: "https://bankly.com" },
-  { id: "mediax", name: "MediaX", logo: "/client5.png", website: "https://mediax.com" },
-  { id: "glowup", name: "GlowUp", logo: "/client6.png", website: "https://glowup.com" }
+  { id: "retailco", name: "GlobalDynamics", logo: "/images/clients/global-dynamics-logo.png", website: "https://retailco.com" },
+  { id: "finstart", name: "InnovateLabs", logo: "/images/clients/innovate-labs-logo.png", website: "https://finstart.com" },
+  { id: "saasify", name: "NexusSolutions", logo: "/images/clients/nexus-solutions-logo.png", website: "https://saasify.com" },
+  { id: "bankly", name: "QuantumDigital", logo: "/images/clients/quantum-digital-logo.png", website: "https://bankly.com" },
+  { id: "mediax", name: "Techflow", logo: "/images/clients/techflow-logo.png", website: "https://mediax.com" },
+  { id: "glowup", name: "VertexSystems", logo: "/images/clients/vertex-systems-logo.png", website: "https://glowup.com" }
 ];
 
 export const trustIndicators: TrustIndicator[] = [

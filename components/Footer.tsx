@@ -28,9 +28,9 @@ const footerLinks = {
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Terms of Service", href: "/terms" },
     { name: "Cookie Policy", href: "/privacy#cookies" },
-    { name: "GDPR", href: "#" },
+    { name: "Refund Policy", href: "/refund" },
   ],
 }
 
@@ -94,14 +94,14 @@ export default function Footer() {
               </motion.a>
 
               <motion.a
-                href="tel:+15551234567"
+                href="tel:+14107560672"
                 whileHover={{ x: 5 }}
                 className="flex items-center gap-3 transition-colors hover:text-green-400 text-slate-300 dark:text-gray-400 no-underline group"
               >
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-green-500/20 text-green-400 group-hover:bg-green-500/30 transition-colors">
                   <Phone size={16} />
                 </div>
-                +1 (555) 123-4567
+                +1 (410) 756-0672
               </motion.a>
 
               <motion.div

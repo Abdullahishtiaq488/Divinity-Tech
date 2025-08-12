@@ -442,7 +442,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section - FIXED with proper contrast and beautiful colors */}
-      <section className="py-32 px-4 md:px-8 lg:px-16" style={{ backgroundColor: 'var(--color-surface)' }}>
+      <section id='faq' className="py-32 px-4 md:px-8 lg:px-16" style={{ backgroundColor: 'var(--color-surface)' }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
