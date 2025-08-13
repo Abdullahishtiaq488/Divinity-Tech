@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devnity Tech - Premium Digital Agency",
+  title: "Devnity Tech - Innovative Technology Solutions",
   description: "Transform your business with premium digital solutions from Divinity Tech. Web development, design, marketing, and more.",
 };
 

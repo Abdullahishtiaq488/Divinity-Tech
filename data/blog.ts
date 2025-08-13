@@ -228,27 +228,7 @@ export const blogPosts: BlogPost[] = [
     readTime: 9,
     image: "/modern-css-grid-examples.png",
     featured: false,
-  },
-  {
-    id: 12,
-    title: "Building Trust Through Design: Security and UX",
-    slug: "building-trust-design-security",
-    excerpt:
-      "Explore how design choices can communicate security and build user trust. From visual cues to interaction patterns.",
-    content:
-      "In an era of increasing digital threats, building user trust through design has become more important than ever. Security and UX must work together to create experiences that feel both safe and seamless.<br><br>Visual trust indicators like SSL badges, professional design aesthetics, and clear privacy policies signal security at a glance. Authentication flows should balance security requirements with usability—multi-factor authentication doesn't have to mean frustration.<br><br>Transparent data collection practices that explain why information is needed build confidence. Error messages should explain security-related issues in plain language without technical jargon.<br><br>Security elements should be visible without being intrusive, reassuring users without distracting from primary tasks. The most trusted digital products combine robust security with thoughtful design that communicates protection throughout the user experience. This creates environments where users feel comfortable completing sensitive actions.",
-    author: {
-      name: "James Anderson",
-      avatar: "/placeholder.svg?height=40&width=40",
-      role: "Security UX Designer",
-    },
-    category: "Web Development",
-    tags: ["Security", "Trust", "UX", "Design Psychology"],
-    publishedAt: "2023-12-18",
-    readTime: 6,
-    image: "/placeholder.svg?height=400&width=600",
-    featured: false,
-  },
+  }
 ]
 
 export const featuredPosts = blogPosts.filter((post) => post.featured)

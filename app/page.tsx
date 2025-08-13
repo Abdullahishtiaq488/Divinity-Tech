@@ -80,7 +80,7 @@ export default function OptimizedHomePage() {
       <HeroCarousel />
 
       {/* Services Overview - Enhanced */}
-      <section 
+      <section
         className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden"
         aria-labelledby="services-heading"
       >
@@ -89,7 +89,7 @@ export default function OptimizedHomePage() {
           <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -97,20 +97,20 @@ export default function OptimizedHomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div 
+            <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
-              style={{ 
-                backgroundColor: '#f3e8ff', 
-                color: '#9333ea', 
-                borderColor: '#c084fc' 
+              style={{
+                backgroundColor: '#f3e8ff',
+                color: '#9333ea',
+                borderColor: '#c084fc'
               }}
             >
               <Sparkles size={16} aria-hidden="true" />
               <span>Our Expertise</span>
             </div>
-            <h2 
+            <h2
               id="services-heading"
-              className="text-4xl font-bold mb-4" 
+              className="text-4xl font-bold mb-4"
               style={{ color: 'var(--color-text)' }}
             >
               Our <span style={{ color: '#3b82f6' }}>Services</span>
@@ -119,12 +119,12 @@ export default function OptimizedHomePage() {
               Comprehensive digital solutions designed to elevate your business and drive measurable results.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const IconComponent = iconMap[service.icon as keyof typeof iconMap];
               const color = colorMap[service.color as keyof typeof colorMap];
-              
+
               return (
                 <motion.div
                   key={service.id}
@@ -133,9 +133,9 @@ export default function OptimizedHomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 border-2 hover:-translate-y-2 cursor-pointer"
-                  style={{ 
-                    backgroundColor: 'var(--color-surface)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-surface)',
+                    borderColor: 'var(--color-border)'
                   }}
                   onClick={() => handleServiceSelect(service)}
                   role="button"
@@ -148,30 +148,30 @@ export default function OptimizedHomePage() {
                     }
                   }}
                 >
-                  <div 
+                  <div
                     className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300 border-2"
-                    style={{ 
-                      backgroundColor: color.bg, 
-                      color: color.text, 
-                      borderColor: color.border 
+                    style={{
+                      backgroundColor: color.bg,
+                      color: color.text,
+                      borderColor: color.border
                     }}
                     aria-hidden="true"
                   >
                     <IconComponent />
                   </div>
-                  
+
                   <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>
                     {service.title}
                   </h3>
                   <p className="mb-4 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                     {service.description}
                   </p>
-                  
+
                   <ul className="space-y-2" role="list">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                        <div 
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0" 
+                        <div
+                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                           style={{ backgroundColor: color.text }}
                           aria-hidden="true"
                         />
@@ -179,12 +179,12 @@ export default function OptimizedHomePage() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <div className="mt-4 pt-4 border-t flex items-center justify-between" style={{ borderColor: 'var(--color-border)' }}>
                     <span className="text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>Learn More</span>
-                    <ArrowRight 
-                      size={16} 
-                      className="group-hover:translate-x-1 transition-transform" 
+                    <ArrowRight
+                      size={16}
+                      className="group-hover:translate-x-1 transition-transform"
                       style={{ color: color.text }}
                       aria-hidden="true"
                     />
@@ -193,9 +193,9 @@ export default function OptimizedHomePage() {
               );
             })}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Link 
+            <Link
               href="/services"
               className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl no-underline"
               style={{ backgroundColor: '#3b82f6' }}
@@ -211,7 +211,7 @@ export default function OptimizedHomePage() {
       {/* Service Modal */}
       <AnimatePresence>
         {selectedService && (
-          <div 
+          <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
             role="dialog"
             aria-modal="true"
@@ -223,18 +223,18 @@ export default function OptimizedHomePage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               className="rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border-2"
-              style={{ 
-                backgroundColor: 'var(--color-surface)', 
-                borderColor: 'var(--color-border)' 
+              style={{
+                backgroundColor: 'var(--color-surface)',
+                borderColor: 'var(--color-border)'
               }}
             >
               <div className="relative p-8">
                 <button
                   onClick={handleCloseModal}
                   className="absolute top-6 right-6 rounded-full p-2 transition-colors border-2"
-                  style={{ 
-                    backgroundColor: 'var(--color-muted)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-muted)',
+                    borderColor: 'var(--color-border)'
                   }}
                   aria-label="Close service details modal"
                 >
@@ -247,18 +247,18 @@ export default function OptimizedHomePage() {
                       <div style={{ color: '#3b82f6' }} aria-hidden="true">
                         {getIcon(selectedService.icon)}
                       </div>
-                      <h2 
+                      <h2
                         id="modal-title"
-                        className="text-3xl font-bold" 
+                        className="text-3xl font-bold"
                         style={{ color: 'var(--color-text)' }}
                       >
                         {selectedService.title}
                       </h2>
                     </div>
-                    
-                    <p 
+
+                    <p
                       id="modal-description"
-                      className="text-lg leading-relaxed mb-8" 
+                      className="text-lg leading-relaxed mb-8"
                       style={{ color: 'var(--color-text-secondary)' }}
                     >
                       {selectedService.longDescription}
@@ -278,7 +278,7 @@ export default function OptimizedHomePage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold mb-3" style={{ color: 'var(--color-text)' }}>
                           Key Benefits
@@ -313,11 +313,11 @@ export default function OptimizedHomePage() {
                   </div>
 
                   <div className="space-y-6">
-                    <div 
+                    <div
                       className="rounded-xl p-6 border-2"
-                      style={{ 
-                        backgroundColor: '#dbeafe', 
-                        borderColor: '#93c5fd' 
+                      style={{
+                        backgroundColor: '#dbeafe',
+                        borderColor: '#93c5fd'
                       }}
                     >
                       <div className="flex items-center gap-2 mb-4">
@@ -332,11 +332,11 @@ export default function OptimizedHomePage() {
                       </p>
                     </div>
 
-                    <div 
+                    <div
                       className="rounded-xl p-6 border-2"
-                      style={{ 
-                        backgroundColor: 'var(--color-muted)', 
-                        borderColor: 'var(--color-border)' 
+                      style={{
+                        backgroundColor: 'var(--color-muted)',
+                        borderColor: 'var(--color-border)'
                       }}
                     >
                       <div className="flex items-center gap-2 mb-4">
@@ -368,8 +368,8 @@ export default function OptimizedHomePage() {
       </AnimatePresence>
 
       {/* Portfolio Preview - Enhanced */}
-      <section 
-        className="py-20 px-4 md:px-8 lg:px-16" 
+      <section
+        className="py-20 px-4 md:px-8 lg:px-16"
         style={{ backgroundColor: 'var(--color-surface)' }}
         aria-labelledby="portfolio-heading"
       >
@@ -380,9 +380,9 @@ export default function OptimizedHomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 
+            <h2
               id="portfolio-heading"
-              className="text-4xl font-bold mb-4" 
+              className="text-4xl font-bold mb-4"
               style={{ color: 'var(--color-text)' }}
             >
               Featured <span style={{ color: '#3b82f6' }}>Projects</span>
@@ -391,11 +391,11 @@ export default function OptimizedHomePage() {
               Discover some of our recent work and see how we've helped businesses achieve their digital goals.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioPreview.map((project, index) => {
               const color = portfolioColors[index % portfolioColors.length];
-              
+
               return (
                 <motion.article
                   key={project.id}
@@ -404,14 +404,14 @@ export default function OptimizedHomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:scale-105"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
                   <div className="relative overflow-hidden">
                     <div className="aspect-[4/3] relative">
-                      <Image 
+                      <Image
                         src={project.image || "/placeholder.svg"}
                         alt={`${project.title} - ${project.category} project showcase`}
                         fill
@@ -422,23 +422,23 @@ export default function OptimizedHomePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    
+
                     <div className="absolute top-4 left-4">
-                      <span 
+                      <span
                         className="px-3 py-1 rounded-full text-xs font-semibold border-2"
-                        style={{ 
-                          backgroundColor: color.bg, 
-                          color: color.text, 
-                          borderColor: color.text 
+                        style={{
+                          backgroundColor: color.bg,
+                          color: color.text,
+                          borderColor: color.text
                         }}
                       >
                         {project.category}
                       </span>
                     </div>
-                    
+
                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div 
-                        className="bg-white/90 backdrop-blur-sm rounded-full p-2 border-2" 
+                      <div
+                        className="bg-white/90 backdrop-blur-sm rounded-full p-2 border-2"
                         style={{ borderColor: color.text }}
                         aria-hidden="true"
                       >
@@ -446,7 +446,7 @@ export default function OptimizedHomePage() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors" style={{ color: 'var(--color-text)' }}>
                       {project.title}
@@ -459,9 +459,9 @@ export default function OptimizedHomePage() {
               );
             })}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Link 
+            <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl no-underline"
               style={{ backgroundColor: '#3b82f6' }}
@@ -475,7 +475,7 @@ export default function OptimizedHomePage() {
       </section>
 
       {/* Testimonials - Enhanced */}
-      <section 
+      <section
         className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden"
         aria-labelledby="testimonials-heading"
       >
@@ -484,7 +484,7 @@ export default function OptimizedHomePage() {
           <div className="absolute top-20 right-20 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-500"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1500"></div>
         </div>
-        
+
         <div className="max-w-6xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -492,9 +492,9 @@ export default function OptimizedHomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 
+            <h2
               id="testimonials-heading"
-              className="text-4xl font-bold mb-4" 
+              className="text-4xl font-bold mb-4"
               style={{ color: 'var(--color-text)' }}
             >
               What Our <span style={{ color: '#3b82f6' }}>Clients Say</span>
@@ -503,7 +503,7 @@ export default function OptimizedHomePage() {
               Don't just take our word for it. Here's what our clients say about working with us.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.article
@@ -513,26 +513,26 @@ export default function OptimizedHomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border-2 relative"
-                style={{ 
-                  backgroundColor: 'var(--color-surface)', 
-                  borderColor: 'var(--color-border)' 
+                style={{
+                  backgroundColor: 'var(--color-surface)',
+                  borderColor: 'var(--color-border)'
                 }}
               >
                 <Quote size={24} className="mb-4" style={{ color: '#3b82f6' }} aria-hidden="true" />
-                
+
                 <div className="flex mb-4" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} size={16} className="text-yellow-400 fill-current" aria-hidden="true" />
                   ))}
                 </div>
-                
+
                 <blockquote className="mb-6 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                   "{testimonial.text}"
                 </blockquote>
-                
+
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 relative rounded-full overflow-hidden border-2" style={{ borderColor: '#3b82f6' }}>
-                    <Image 
+                    <Image
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={`${testimonial.name} - ${testimonial.position} at ${testimonial.company}`}
                       fill
@@ -561,8 +561,8 @@ export default function OptimizedHomePage() {
       </section>
 
       {/* Trust Indicators & Client Logos - Enhanced */}
-      <section 
-        className="py-20 px-4 md:px-8 lg:px-16" 
+      <section
+        className="py-20 px-4 md:px-8 lg:px-16"
         style={{ backgroundColor: 'var(--color-surface)' }}
         aria-labelledby="trust-heading"
       >
@@ -574,9 +574,9 @@ export default function OptimizedHomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 
+            <h2
               id="trust-heading"
-              className="text-4xl font-bold mb-4" 
+              className="text-4xl font-bold mb-4"
               style={{ color: 'var(--color-text)' }}
             >
               Why Choose <span style={{ color: '#3b82f6' }}>Devnity Tech</span>?
@@ -591,7 +591,7 @@ export default function OptimizedHomePage() {
             {trustIndicators.map((indicator, index) => {
               const IconComponent = iconMap[indicator.icon as keyof typeof iconMap];
               const color = trustIndicatorColors[index % trustIndicatorColors.length];
-              
+
               return (
                 <motion.div
                   key={indicator.id}
@@ -600,17 +600,17 @@ export default function OptimizedHomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 border-2 group"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
-                  <div 
+                  <div
                     className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300 border-2"
-                    style={{ 
-                      backgroundColor: color.bg, 
-                      color: color.text, 
-                      borderColor: color.border 
+                    style={{
+                      backgroundColor: color.bg,
+                      color: color.text,
+                      borderColor: color.border
                     }}
                     aria-hidden="true"
                   >
@@ -650,13 +650,13 @@ export default function OptimizedHomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="rounded-xl p-4 flex items-center justify-center hover:shadow-md transition-all duration-300 border-2 group"
-                  style={{ 
-                    backgroundColor: 'var(--color-background)', 
-                    borderColor: 'var(--color-border)' 
+                  style={{
+                    backgroundColor: 'var(--color-background)',
+                    borderColor: 'var(--color-border)'
                   }}
                 >
-                  <div className="w-20 h-12 relative">
-                    <Image 
+                  <div className="w-34 h-12 relative">
+                    <Image
                       src={client.logo || "/placeholder.svg"}
                       alt={`${client.name} company logo`}
                       fill
@@ -674,7 +674,7 @@ export default function OptimizedHomePage() {
       </section>
 
       {/* Contact CTA - Enhanced */}
-      <section 
+      <section
         className="py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden"
         aria-labelledby="cta-heading"
       >
@@ -683,16 +683,16 @@ export default function OptimizedHomePage() {
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 
+            <h2
               id="cta-heading"
-              className="text-4xl font-bold mb-6" 
+              className="text-4xl font-bold mb-6"
               style={{ color: 'var(--color-text)' }}
             >
               Ready to Start Your <span style={{ color: '#3b82f6' }}>Project</span>?
@@ -701,7 +701,7 @@ export default function OptimizedHomePage() {
               Contact us today for a free consultation and discover how Devnity Tech can help your business thrive in the digital landscape.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 href="/contact"
                 className="text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 no-underline"
                 style={{ backgroundColor: '#3b82f6' }}
@@ -710,12 +710,12 @@ export default function OptimizedHomePage() {
                 Contact Us Today
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
-              <Link 
+              <Link
                 href="/quote"
                 className="border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 no-underline"
-                style={{ 
-                  borderColor: 'var(--color-border)', 
-                  color: 'var(--color-text)' 
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-text)'
                 }}
                 aria-label="Get a free project quote"
               >

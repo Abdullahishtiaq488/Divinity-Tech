@@ -80,8 +80,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const categoryColor = CATEGORY_COLORS[0]
 
   // Process content for proper spacing
-  const firstParagraph = post.content.split('<br><br>')[0]
-  const remainingContent = post.content.split('<br><br>').slice(1).join('<div class="my-6"></div>')
+  const firstParagraph = post.content.split("<br><br>")[0]
+  const remainingContent = post.content.split("<br><br>").slice(1).join('<div class="my-6"></div>')
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--color-background)" }}>
@@ -90,14 +90,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="max-w-6xl mx-auto">
           <ol className="flex items-center gap-2 text-sm">
             <li>
-              <Link href="/" className="flex items-center gap-1 hover:text-blue-600 transition-colors" style={{ color: "var(--color-text-secondary)" }}>
+              <Link
+                href="/"
+                className="flex items-center gap-1 hover:text-blue-600 transition-colors"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
                 <Home size={16} />
                 Home
               </Link>
             </li>
             <ChevronRight size={16} style={{ color: "var(--color-text-secondary)" }} />
             <li>
-              <Link href="/blog" className="hover:text-blue-600 transition-colors" style={{ color: "var(--color-text-secondary)" }}>
+              <Link
+                href="/blog"
+                className="hover:text-blue-600 transition-colors"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
                 Blog
               </Link>
             </li>
@@ -115,41 +123,79 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="grid lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <span className="px-4 py-2 rounded-full text-sm font-semibold border-2" style={{
-                  backgroundColor: categoryColor.bg,
-                  color: categoryColor.text,
-                  borderColor: categoryColor.border,
-                }}>
+                <span
+                  className="px-4 py-2 rounded-full text-sm font-semibold border-2"
+                  style={{
+                    backgroundColor: categoryColor.bg,
+                    color: categoryColor.text,
+                    borderColor: categoryColor.border,
+                  }}
+                >
                   {post.category}
                 </span>
                 {post.featured && (
-                  <span className="px-3 py-1 rounded-full text-sm font-medium border-2 flex items-center gap-1" style={{
-                    backgroundColor: "#fed7aa",
-                    color: "#ea580c",
-                    borderColor: "#fdba74",
-                  }}>
+                  <span
+                    className="px-3 py-1 rounded-full text-sm font-medium border-2 flex items-center gap-1"
+                    style={{
+                      backgroundColor: "#fed7aa",
+                      color: "#ea580c",
+                      borderColor: "#fdba74",
+                    }}
+                  >
                     <Award size={14} />
                     Featured
                   </span>
                 )}
               </div>
 
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: "var(--color-text)" }}>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                style={{ color: "var(--color-text)" }}
+              >
                 {post.title}
               </motion.h1>
 
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-xl leading-relaxed mb-8" style={{ color: "var(--color-text-secondary)" }}>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-xl leading-relaxed mb-8"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
                 {post.excerpt}
               </motion.p>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b" style={{ borderColor: "var(--color-border)" }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-wrap items-center gap-6 mb-8 pb-8 border-b"
+                style={{ borderColor: "var(--color-border)" }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 relative rounded-full overflow-hidden border-2" style={{ borderColor: categoryColor.text }}>
-                    <Image src={post.author.avatar || "/placeholder.svg"} alt={`${post.author.name} - ${post.author.role}`} fill sizes="48px" className="object-cover" priority />
+                  <div
+                    className="w-12 h-12 relative rounded-full overflow-hidden border-2"
+                    style={{ borderColor: categoryColor.text }}
+                  >
+                    <Image
+                      src={post.author.avatar || "/placeholder.svg"}
+                      alt={`${post.author.name} - ${post.author.role}`}
+                      fill
+                      sizes="48px"
+                      className="object-cover"
+                      priority
+                      quality={70}
+                    />
                   </div>
                   <div>
-                    <p className="font-semibold" style={{ color: "var(--color-text)" }}>{post.author.name}</p>
-                    <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>{post.author.role}</p>
+                    <p className="font-semibold" style={{ color: "var(--color-text)" }}>
+                      {post.author.name}
+                    </p>
+                    <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
+                      {post.author.role}
+                    </p>
                   </div>
                 </div>
 
@@ -168,11 +214,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 </div>
 
-                <button onClick={handleShare} disabled={isSharing} className="flex items-center gap-2 px-4 py-2 rounded-lg border-2 hover:shadow-md transition-all duration-300" style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                  color: "var(--color-text)",
-                }}>
+                <button
+                  onClick={handleShare}
+                  disabled={isSharing}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border-2 hover:shadow-md transition-all duration-300"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                    color: "var(--color-text)",
+                  }}
+                >
                   <Share2 size={16} />
                   {isSharing ? "Sharing..." : "Share"}
                 </button>
@@ -180,9 +231,27 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <div className="lg:col-span-1">
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} className="sticky top-8">
-                <div className="aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border-2" style={{ borderColor: "var(--color-border)" }}>
-                  <Image src={post.image || "/placeholder.svg"} alt={`${post.title} - article image`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" priority quality={90} />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+                className="sticky top-8"
+              >
+                <div
+                  className="aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border-2"
+                  style={{ borderColor: "var(--color-border)" }}
+                >
+                  <Image
+                    src={post.image || "/placeholder.svg"}
+                    alt={`${post.title} - article image`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                    className="object-cover"
+                    priority
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
               </motion.div>
@@ -194,24 +263,29 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Article Content */}
       <section className="py-12 px-4 md:px-8 lg:px-16">
         <div className="max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="prose prose-lg prose-blue max-w-none" style={{ color: "var(--color-text)" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="prose prose-lg prose-blue max-w-none"
+            style={{ color: "var(--color-text)" }}
+          >
             <div className="text-lg leading-relaxed">
               {/* First paragraph with special styling */}
-              <div 
+              <div
                 className="text-xl leading-relaxed first-letter:text-6xl first-letter:font-bold first-letter:text-blue-600 first-letter:float-left first-letter:mr-3 first-letter:mt-1"
-                dangerouslySetInnerHTML={{ __html: firstParagraph }} 
+                dangerouslySetInnerHTML={{ __html: firstParagraph }}
               />
-              
+
               {/* Remaining content with proper spacing */}
-              <div 
-                className="text-lg leading-relaxed mt-6"
-                dangerouslySetInnerHTML={{ __html: remainingContent }} 
-              />
+              <div className="text-lg leading-relaxed mt-6" dangerouslySetInnerHTML={{ __html: remainingContent }} />
             </div>
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8 rounded-r-lg">
               <p className="text-blue-900 font-medium">
-                💡 <strong>Key Takeaway:</strong> This article provides valuable insights into {post.category.toLowerCase()} that can help you improve your business outcomes and stay ahead of industry trends.
+                💡 <strong>Key Takeaway:</strong> This article provides valuable insights into{" "}
+                {post.category.toLowerCase()} that can help you improve your business outcomes and stay ahead of
+                industry trends.
               </p>
             </div>
 
@@ -224,11 +298,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.tags.map((tag, index) => {
                   const color = CATEGORY_COLORS[index % CATEGORY_COLORS.length]
                   return (
-                    <span key={tag} className="px-4 py-2 rounded-full text-sm font-medium border-2 flex items-center gap-1" style={{
-                      backgroundColor: color.bg,
-                      color: color.text,
-                      borderColor: color.border,
-                    }}>
+                    <span
+                      key={tag}
+                      className="px-4 py-2 rounded-full text-sm font-medium border-2 flex items-center gap-1"
+                      style={{
+                        backgroundColor: color.bg,
+                        color: color.text,
+                        borderColor: color.border,
+                      }}
+                    >
                       <Tag size={12} />
                       {tag}
                     </span>
@@ -243,22 +321,44 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Author Bio Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16" style={{ backgroundColor: "var(--color-surface)" }}>
         <div className="max-w-4xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl p-8 border-2" style={{
-            backgroundColor: "var(--color-background)",
-            borderColor: "var(--color-border)",
-          }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl p-8 border-2"
+            style={{
+              backgroundColor: "var(--color-background)",
+              borderColor: "var(--color-border)",
+            }}
+          >
             <div className="flex items-start gap-6">
-              <div className="w-20 h-20 relative rounded-full overflow-hidden border-4 flex-shrink-0" style={{ borderColor: categoryColor.text }}>
-                <Image src={post.author.avatar || "/placeholder.svg"} alt={`${post.author.name} - ${post.author.role}`} fill sizes="80px" className="object-cover" />
+              <div
+                className="w-20 h-20 relative rounded-full overflow-hidden border-4 flex-shrink-0"
+                style={{ borderColor: categoryColor.text }}
+              >
+                <Image
+                  src={post.author.avatar || "/placeholder.svg"}
+                  alt={`${post.author.name} - ${post.author.role}`}
+                  fill
+                  sizes="80px"
+                  className="object-cover"
+                  loading="lazy"
+                  quality={70}
+                />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <User size={16} style={{ color: categoryColor.text }} />
-                  <h3 className="text-2xl font-bold" style={{ color: "var(--color-text)" }}>{post.author.name}</h3>
+                  <h3 className="text-2xl font-bold" style={{ color: "var(--color-text)" }}>
+                    {post.author.name}
+                  </h3>
                 </div>
-                <p className="text-lg font-medium mb-3" style={{ color: categoryColor.text }}>{post.author.role}</p>
+                <p className="text-lg font-medium mb-3" style={{ color: categoryColor.text }}>
+                  {post.author.role}
+                </p>
                 <p className="leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                  {post.author.bio || `${post.author.name} is a ${post.author.role} with extensive experience in ${post.category.toLowerCase()}. They specialize in creating innovative solutions and sharing insights with the development community.`}
+                  {post.author.bio ||
+                    `${post.author.name} is a ${post.author.role} with extensive experience in ${post.category.toLowerCase()}. They specialize in creating innovative solutions and sharing insights with the development community.`}
                 </p>
               </div>
             </div>
@@ -272,30 +372,50 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               {previousPost && (
-                <Link href={`/blog/${previousPost.id}`} className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all duration-300 block" style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}>
-                  <div className="flex items-center gap-2 mb-3 text-sm" style={{ color: "var(--color-text-secondary)" }}>
+                <Link
+                  href={`/blog/${previousPost.id}`}
+                  className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all duration-300 block"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  <div
+                    className="flex items-center gap-2 mb-3 text-sm"
+                    style={{ color: "var(--color-text-secondary)" }}
+                  >
                     <ArrowLeft size={16} />
                     <span>Previous Article</span>
                   </div>
-                  <h4 className="font-bold group-hover:text-blue-600 transition-colors" style={{ color: "var(--color-text)" }}>
+                  <h4
+                    className="font-bold group-hover:text-blue-600 transition-colors"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     {previousPost.title}
                   </h4>
                 </Link>
               )}
 
               {nextPost && (
-                <Link href={`/blog/${nextPost.id}`} className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all duration-300 block text-right md:ml-auto" style={{
-                  backgroundColor: "var(--color-surface)",
-                  borderColor: "var(--color-border)",
-                }}>
-                  <div className="flex items-center justify-end gap-2 mb-3 text-sm" style={{ color: "var(--color-text-secondary)" }}>
+                <Link
+                  href={`/blog/${nextPost.id}`}
+                  className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all duration-300 block text-right md:ml-auto"
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-end gap-2 mb-3 text-sm"
+                    style={{ color: "var(--color-text-secondary)" }}
+                  >
                     <span>Next Article</span>
                     <ArrowRight size={16} />
                   </div>
-                  <h4 className="font-bold group-hover:text-blue-600 transition-colors" style={{ color: "var(--color-text)" }}>
+                  <h4
+                    className="font-bold group-hover:text-blue-600 transition-colors"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     {nextPost.title}
                   </h4>
                 </Link>
@@ -310,49 +430,83 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="py-16 px-4 md:px-8 lg:px-16" style={{ backgroundColor: "var(--color-surface)" }}>
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-3 mb-12">
-              <div className="p-2 rounded-lg border-2" style={{
-                backgroundColor: categoryColor.bg,
-                color: categoryColor.text,
-                borderColor: categoryColor.border,
-              }}>
+              <div
+                className="p-2 rounded-lg border-2"
+                style={{
+                  backgroundColor: categoryColor.bg,
+                  color: categoryColor.text,
+                  borderColor: categoryColor.border,
+                }}
+              >
                 <Sparkles size={20} />
               </div>
-              <h2 className="text-3xl font-bold" style={{ color: "var(--color-text)" }}>Related Articles</h2>
+              <h2 className="text-3xl font-bold" style={{ color: "var(--color-text)" }}>
+                Related Articles
+              </h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost, index) => {
                 const color = CATEGORY_COLORS[index % CATEGORY_COLORS.length]
                 return (
-                  <motion.article key={relatedPost.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }} className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:scale-105" style={{
-                    backgroundColor: "var(--color-background)",
-                    borderColor: "var(--color-border)",
-                  }}>
+                  <motion.article
+                    key={relatedPost.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="group rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:scale-105"
+                    style={{
+                      backgroundColor: "var(--color-background)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  >
                     <Link href={`/blog/${relatedPost.id}`} className="block">
                       <div className="relative overflow-hidden">
                         <div className="aspect-[4/3] relative">
-                          <Image src={relatedPost.image || "/placeholder.svg"} alt={`${relatedPost.title} - related article`} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                          <Image
+                            src={relatedPost.image || "/placeholder.svg"}
+                            alt={`${relatedPost.title} - related article`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                            quality={70}
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                          />
                         </div>
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 rounded-full text-xs font-semibold border-2" style={{
-                            backgroundColor: color.bg,
-                            color: color.text,
-                            borderColor: color.border,
-                          }}>
+                          <span
+                            className="px-3 py-1 rounded-full text-xs font-semibold border-2"
+                            style={{
+                              backgroundColor: color.bg,
+                              color: color.text,
+                              borderColor: color.border,
+                            }}
+                          >
                             {relatedPost.category}
                           </span>
                         </div>
                       </div>
 
                       <div className="p-6">
-                        <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors line-clamp-2" style={{ color: "var(--color-text)" }}>
+                        <h3
+                          className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors line-clamp-2"
+                          style={{ color: "var(--color-text)" }}
+                        >
                           {relatedPost.title}
                         </h3>
-                        <p className="text-sm leading-relaxed line-clamp-2 mb-4" style={{ color: "var(--color-text-secondary)" }}>
+                        <p
+                          className="text-sm leading-relaxed line-clamp-2 mb-4"
+                          style={{ color: "var(--color-text-secondary)" }}
+                        >
                           {relatedPost.excerpt}
                         </p>
                         <div className="flex items-center justify-between text-xs">
-                          <span style={{ color: "var(--color-text-secondary)" }}>{formatDate(relatedPost.publishedAt)}</span>
+                          <span style={{ color: "var(--color-text-secondary)" }}>
+                            {formatDate(relatedPost.publishedAt)}
+                          </span>
                           <span style={{ color: "var(--color-text-secondary)" }}>{relatedPost.readTime} min read</span>
                         </div>
                       </div>
@@ -369,11 +523,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="py-20 px-4 md:px-8 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2" style={{
-              backgroundColor: "#dbeafe",
-              color: "#2563eb",
-              borderColor: "#93c5fd",
-            }}>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
+              style={{
+                backgroundColor: "#dbeafe",
+                color: "#2563eb",
+                borderColor: "#93c5fd",
+              }}
+            >
               <Sparkles size={16} />
               <span>Ready to Get Started?</span>
             </div>
@@ -382,15 +539,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               Let's Discuss Your <span style={{ color: "#3b82f6" }}>Project</span>
             </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: "var(--color-text-secondary)" }}>
-              Found this article helpful? Let's talk about how we can help you implement these strategies for your business.
+              Found this article helpful? Let's talk about how we can help you implement these strategies for your
+              business.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 no-underline">
+              <Link
+                href="/contact"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 no-underline"
+              >
                 Start Your Project
                 <ArrowRight size={18} />
               </Link>
-              <Link href="/blog" className="flex border-2 border-blue-200 hover:border-blue-400 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-sm hover:shadow-md no-underline">
+              <Link
+                href="/blog"
+                className="flex border-2 border-blue-200 hover:border-blue-400 bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-sm hover:shadow-md no-underline"
+              >
                 <ArrowLeft size={18} className="mr-2" />
                 Back to Blog
               </Link>

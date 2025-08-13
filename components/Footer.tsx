@@ -243,6 +243,8 @@ export default function Footer() {
                   alt="Visa"
                   width={32}
                   height={20}
+                  loading="lazy"
+                  quality={75}
                   className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
                 />
               </div>
@@ -252,6 +254,8 @@ export default function Footer() {
                   alt="Mastercard"
                   width={32}
                   height={20}
+                  loading="lazy"
+                  quality={75}
                   className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
                 />
               </div>
@@ -261,6 +265,8 @@ export default function Footer() {
                   alt="American Express"
                   width={32}
                   height={20}
+                  loading="lazy"
+                  quality={75}
                   className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
                 />
               </div>
@@ -270,6 +276,8 @@ export default function Footer() {
                   alt="Discover"
                   width={32}
                   height={20}
+                  loading="lazy"
+                  quality={75}
                   className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
                 />
               </div>

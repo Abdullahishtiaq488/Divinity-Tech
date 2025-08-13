@@ -217,10 +217,13 @@ export default function BlogPage() {
                             src={post.image || "/placeholder.svg"}
                             alt={`${post.title} - featured article`}
                             fill
-                            sizes="(max-width: 1024px) 100vw, 33vw"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 400px"
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
-                            loading="lazy"
-                            quality={85}
+                            priority={index === 0} // Priority for first featured post only
+                            loading={index === 0 ? "eager" : "lazy"}
+                            quality={75} // Reduced quality for better performance
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -292,6 +295,7 @@ export default function BlogPage() {
                                 sizes="32px"
                                 className="object-cover"
                                 loading="lazy"
+                                quality={60} // Lower quality for small avatars
                               />
                             </div>
                             <div>
@@ -332,6 +336,8 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {filteredPosts.map((post, index) => {
               const color = CATEGORY_COLORS[index % CATEGORY_COLORS.length]
+              // Determine if this is above the fold (first 6 posts in grid)
+              const isAboveFold = index < 6
 
               return (
                 <motion.article
@@ -353,10 +359,13 @@ export default function BlogPage() {
                           src={post.image || "/placeholder.svg"}
                           alt={`${post.title} - blog article`}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 350px"
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
-                          loading="lazy"
-                          quality={80}
+                          loading={isAboveFold ? "eager" : "lazy"}
+                          priority={isAboveFold && index < 3} // Priority for first 3 posts only
+                          quality={70} // Balanced quality for grid images
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
@@ -428,6 +437,7 @@ export default function BlogPage() {
                               sizes="32px"
                               className="object-cover"
                               loading="lazy"
+                              quality={60} // Lower quality for small avatars
                             />
                           </div>
                           <div>

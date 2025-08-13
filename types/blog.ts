@@ -8,6 +8,7 @@ export interface BlogPost {
     name: string
     avatar: string
     role: string
+    bio?:any
   }
   category: string
   tags: string[]
