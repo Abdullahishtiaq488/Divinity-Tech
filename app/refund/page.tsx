@@ -134,9 +134,9 @@ export default function RefundPage() {
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border-2"
               style={{
-                backgroundColor: "#dcfce7",
-                color: "#16a34a",
-                borderColor: "#86efac",
+                backgroundColor: "#3b82f6",
+                color: "white",
+                borderColor: "white",
               }}
             >
               <RefreshCw size={16} />
@@ -144,7 +144,7 @@ export default function RefundPage() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" style={{ color: "var(--color-text)" }}>
-              Refund & <span style={{ color: "#16a34a" }}>Cancellation Policy</span>
+              Refund & <span style={{ color: "#3b82f6" }}>Cancellation Policy</span>
             </h1>
 
             <p
@@ -200,7 +200,7 @@ export default function RefundPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--color-text)" }}>
-              Refund <span style={{ color: "#16a34a" }}>Process</span>
+              Refund <span style={{ color: "#3b82f6" }}>Process</span>
             </h2>
             <p className="text-lg mb-12" style={{ color: "var(--color-text-secondary)" }}>
               Our straightforward 4-step refund process
@@ -219,9 +219,9 @@ export default function RefundPage() {
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border-2"
                     style={{
-                      backgroundColor: "#dcfce7",
-                      color: "#16a34a",
-                      borderColor: "#86efac",
+                      backgroundColor: "#3b82f6",
+                      color: "white",
+                      borderColor: "white",
                     }}
                   >
                     <span className="text-xl font-bold">{step.step}</span>
@@ -341,7 +341,7 @@ export default function RefundPage() {
           >
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--color-text)" }}>
-                Need to Request a <span style={{ color: "#16a34a" }}>Refund</span>?
+                Need to Request a <span style={{ color: "#3b82f6" }}>Refund</span>?
               </h3>
               <p style={{ color: "var(--color-text-secondary)" }}>
                 We're here to help. Contact our support team to initiate a refund request or discuss your concerns.

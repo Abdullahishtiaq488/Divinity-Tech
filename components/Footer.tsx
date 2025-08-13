@@ -1,11 +1,10 @@
 "use client"
 import Link from "next/link"
 import type React from "react"
+import Image from "next/image"
 
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, ArrowRight, Heart } from "lucide-react"
 import { motion } from "framer-motion"
-import AdaptiveLogo from "./AdaptiveLogo"
-import Image from "next/image"
 
 const footerLinks = {
   company: [
@@ -23,7 +22,7 @@ const footerLinks = {
   resources: [
     { name: "Portfolio", href: "/portfolio" },
     { name: "Case Studies", href: "/portfolio" },
-    { name: "Blog", href: "#" },
+    { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/contact#faq" },
   ],
   legal: [
@@ -65,14 +64,14 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6 hover:scale-105 transition-transform duration-200 no-underline">
-
-                  <Image
-                      src="/devnity-logo-dark.png"
-                      alt="Devnity Tech - Innovative Technology Solutions"
-                      width={160} height={94} 
-                      className="object-contain transition-opacity duration-300"
-                      priority
-                    />
+              <Image
+                src="/devnity-logo-dark.png"
+                alt="Devnity Tech - Innovative Technology Solutions"
+                width={160}
+                height={94}
+                className="object-contain transition-opacity duration-300"
+                priority
+              />
             </Link>
 
             <p className="mb-6 leading-relaxed max-w-sm text-slate-300 dark:text-gray-400">
@@ -217,7 +216,7 @@ export default function Footer() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-blue-800 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Subscribe
               </motion.button>
@@ -226,12 +225,55 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-slate-700/50 dark:border-gray-800">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-6 pt-8 border-t border-slate-700/50 dark:border-gray-800">
           {/* Copyright */}
           <div className="flex items-center gap-2 text-sm text-slate-400 dark:text-gray-500">
             <span>© {new Date().getFullYear()} Devnity Tech. Made with</span>
             <Heart size={16} className="text-red-400 fill-current animate-pulse" />
             <span>in New York</span>
+          </div>
+
+          {/* Payment Card Logos */}
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-slate-400 dark:text-gray-500 hidden sm:block">We accept:</span>
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-8 bg-white rounded-md p-1 flex items-center justify-center">
+                <Image
+                  src="/card/visa.png"
+                  alt="Visa"
+                  width={32}
+                  height={20}
+                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
+                />
+              </div>
+              <div className="w-12 h-8 bg-white rounded-md p-1 flex items-center justify-center">
+                <Image
+                  src="/card/mastercard.png"
+                  alt="Mastercard"
+                  width={32}
+                  height={20}
+                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
+                />
+              </div>
+              <div className="w-12 h-8 bg-white rounded-md p-1 flex items-center justify-center">
+                <Image
+                  src="/card/amex.png"
+                  alt="American Express"
+                  width={32}
+                  height={20}
+                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
+                />
+              </div>
+              <div className="w-12 h-8 bg-white rounded-md p-1 flex items-center justify-center">
+                <Image
+                  src="/card/discover.png"
+                  alt="Discover"
+                  width={32}
+                  height={20}
+                  className="object-contain w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-200"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Social Links */}
